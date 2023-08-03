@@ -1,0 +1,55 @@
+body {
+  background-color: #000000;
+}
+.tetris {
+  display: flex;
+
+  &__board {
+    display: block;
+    margin: 100px auto 0;
+    padding: 20px;
+    border: 1px solid grey;
+  }
+
+  &__score-label {
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  &__row {
+    display: flex;
+  }
+
+  &__cell {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    color: grey;
+
+    &-0 {
+      background-color: black;
+    }
+
+    &-1 {
+      background-color: #00d;
+      border-bottom: 1px solid #00f;
+      border-right: 1px solid #00f;
+      border-top: 1px solid #00b;
+      border-left: 1px solid #00b;
+    }
+
+    &-2 {
+      background-color: green;
+    }
+
+    &-3 {
+      background-color: red;
+    }
+  }
+}
+
+// element.style {
+//   width: 44px;
+//   left: 0px;
+// }
