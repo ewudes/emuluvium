@@ -1,9 +1,46 @@
-import { useEffect, useState } from "react";
-import { useInterval } from "./useInterval";
-import { randomShape } from "./shapeFactory";
+import React, { memo, useEffect, useRef, useState } from "react";
+import './tetris.scss';
 
-export const ROW_COUNT = 20;
-export const COLUMN_COUNT = 10;
+const SHAPES = [
+  {
+    shape: [
+      { x: 0, y: 0 },
+      { x: 0, y: 1 },
+      { x: 1, y: 0 },
+      { x: 1, y: 1 },
+    ],
+    width: 2,
+    height: 2,
+    rotate: false,
+  },
+  {
+    shape: [
+      { x: 0, y: 0 },
+      { x: 0, y: 1 },
+      { x: 0, y: 2 },
+      { x: 0, y: 3 },
+    ],
+    width: 1,
+    height: 4,
+  },
+  {
+    shape: [
+      { x: 0, y: 0 },
+      { x: 0, y: 1 },
+      { x: 0, y: 2 },
+      { x: 1, y: 2 },
+    ],
+    width: 1,
+    height: 3,
+  },
+];
+
+function randomShape() {
+  return SHAPES[Math.floor(Math.random() * SHAPES.length)];
+}
+
+const ROW_COUNT = 20;
+const COLUMN_COUNT = 10;
 
 function copyScene(scene) {
   return scene.map((row) => row.slice());
@@ -40,7 +77,7 @@ function createEmptyScene() {
   return Array.from(Array(ROW_COUNT), () => Array(COLUMN_COUNT).fill(0));
 }
 
-export function useBoard() {
+function useBoard() {
   const [scene, setScene] = useState(() => createEmptyScene());
   const [shape, setShape] = useState(() => randomShape());
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -193,5 +230,64 @@ export function useBoard() {
     });
   }
 
+  function useInterval(callback, delay) {
+    const callbackRef = useRef();
+    
+    useEffect( ()=> {
+      callbackRef.current = callback;
+    }, [callback]);
+  
+    useEffect( ()=> {
+      const interval = setInterval(()=> callbackRef.current(), delay);
+      return ()=> clearInterval(interval);
+    }, [delay]);
+  }
+
   return [display, score, onKeyDown];
 }
+
+const Tetris = () => {
+  const [display, score, onKeyDown] = useBoard();
+  const eBoard = useRef();
+
+  useEffect(focusBoard, []);
+
+  function focusBoard() {
+    eBoard.current.focus();
+  }
+
+  return (
+    <div className="tetris">
+      <div ref={eBoard} className={"tetris__board"} tabIndex={0} onKeyDown={onKeyDown}>
+        <div>
+          <span className="tetris__score-label">Score:</span>
+          <span className="tetris__score-label">{score.toLocaleString()}</span>
+        </div>
+        {display.map((row, index) => (
+          <Row row={row} key={index} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const Row = memo((props) => {
+  return (
+    <span className="tetris__row">
+      {props.row.map((cell, index) => (
+        <Cell cell={cell} key={index} />
+      ))}
+    </span>
+  );
+});
+
+const Cell = memo((props) => {
+  const count = useRef(0);
+
+  count.current++;
+
+  const value = props.cell ? props.cell : 0;
+  return <span className={`tetris__cell tetris__cell-${value}`}></span>;
+});
+
+export default memo(Tetris);
