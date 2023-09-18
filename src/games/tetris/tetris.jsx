@@ -35,6 +35,8 @@ const SHAPES = [
   },
 ];
 
+const SHAPES_COLOR = ['red', 'green', 'blue', 'yellow']
+
 function randomShape() {
   return SHAPES[Math.floor(Math.random() * SHAPES.length)];
 }
@@ -287,7 +289,17 @@ const Cell = memo((props) => {
   count.current++;
 
   const value = props.cell ? props.cell : 0;
-  return <span className={`tetris__cell tetris__cell-${value}`}></span>;
+
+  console.log('value', value)
+
+  const kek = () => {
+    if (value === 1) {
+      return SHAPES_COLOR[Math.floor(Math.random() * SHAPES_COLOR.length)];
+    } else {
+      return ''
+    }
+  }
+  return <span className={`tetris__cell tetris__cell-${value} tetris__cell-${kek()}`}></span>;
 });
 
 export default memo(Tetris);
