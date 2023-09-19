@@ -1,5 +1,5 @@
 {
-  "name": "super-game",
+  "name": "supergame",
   "version": "0.1.0",
   "scripts": {
     "start": "react-scripts start",
