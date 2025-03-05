@@ -9,7 +9,7 @@ const Home = () => {
       <h1 className="home__title">Bit Nostalgia</h1>
       <ul className="home__list">
         <li className="home__item">
-          <Link to="/tetris" className="home__link">TetroGrid</Link>
+          <Link to="/tetrogrid" className="home__link">TetroGrid</Link>
         </li>
       </ul>
     </main>
