@@ -206,12 +206,14 @@ const Tetrogrid = () => {
 
   return (
     <div className="tetrogrid-wrap">
-      <div className="tetrogrid__score-wrap">
-        <span className="tetrogrid__score-label">Score:</span>
-        <span>{score.toLocaleString()}</span>
-      </div>
-      <div className="tetrogrid__nextshape-wrap">
-        <span className="tetrogrid__nextshape"></span>
+      <div className="tetrogrid__aside">
+        <div className="tetrogrid__score-wrap">
+          <span className="tetrogrid__score-label">{score.toLocaleString()}</span>
+          {/* <span></span> */}
+        </div>
+        <div className="tetrogrid__nextshape-wrap">
+          <span className="tetrogrid__nextshape">Next shape</span>
+        </div>
       </div>
       <div className="tetrogrid">
         <div ref={eBoard} className="tetrogrid__board" tabIndex={0} onKeyDown={onKeyDown}>
