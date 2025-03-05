@@ -12,14 +12,33 @@ body {
 .tetrogrid {
   display: flex;
 
+  &__score-wrap,
+  &__nextshape-wrap {
+    border: 30px solid #808080;
+    width: 200px;
+    margin-right: 30px;
+    text-align: center;
+  }
+
+  &__score-wrap {
+    margin-bottom: 30px;
+    padding: 50px 0;
+  }
+
+  &__nextshape-wrap {
+    margin-top: 30px;
+    margin-bottom: 198px;
+    padding: 90px 0;
+  }
+
   &__board {
     display: block;
     margin: 0 auto;
-    // padding: 20px;
-    border: 30px solid grey;
+    border: 30px solid #808080;
   }
 
-  &__score-label {
+  &__score-label,
+  &__nextshape {
     font-weight: bold;
     color: #ffffff;
   }
@@ -33,10 +52,10 @@ body {
     width: 30px;
     height: 30px;
     box-sizing: border-box;
-    color: grey;
+    color: #808080;
 
     &-0 {
-      background-color: black;
+      background-color: #000000;
     }
 
     &-1 {
@@ -88,8 +107,3 @@ body {
     }
   }
 }
-
-// element.style {
-//   width: 44px;
-//   left: 0px;
-// }
