@@ -1,14 +1,22 @@
 body {
   background-color: #000000;
 }
-.tetris {
+
+.tetrogrid-wrap {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.tetrogrid {
   display: flex;
 
   &__board {
     display: block;
-    margin: 100px auto 0;
-    padding: 20px;
-    border: 1px solid grey;
+    margin: 0 auto;
+    // padding: 20px;
+    border: 30px solid grey;
   }
 
   &__score-label {

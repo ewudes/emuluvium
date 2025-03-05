@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useRef, useState } from "react";
-import "./tetris.scss";
+import "./tetrogrid.scss";
 
 const SHAPES = [
   {
@@ -196,7 +196,7 @@ function useBoard() {
   return [display, score, onKeyDown];
 }
 
-const Tetris = () => {
+const Tetrogrid = () => {
   const [display, score, onKeyDown] = useBoard();
   const eBoard = useRef();
 
@@ -205,28 +205,33 @@ const Tetris = () => {
   }, []);
 
   return (
-    <div className="tetris">
-      <div ref={eBoard} className="tetris__board" tabIndex={0} onKeyDown={onKeyDown}>
-        <div>
-          <span className="tetris__score-label">Score:</span>
-          <span>{score.toLocaleString()}</span>
+    <div className="tetrogrid-wrap">
+      <div className="tetrogrid__score-wrap">
+        <span className="tetrogrid__score-label">Score:</span>
+        <span>{score.toLocaleString()}</span>
+      </div>
+      <div className="tetrogrid__nextshape-wrap">
+        <span className="tetrogrid__nextshape"></span>
+      </div>
+      <div className="tetrogrid">
+        <div ref={eBoard} className="tetrogrid__board" tabIndex={0} onKeyDown={onKeyDown}>
+          {display.map((row, index) => (
+            <Row key={index} row={row} />
+          ))}
         </div>
-        {display.map((row, index) => (
-          <Row key={index} row={row} />
-        ))}
       </div>
     </div>
   );
 };
 
 const Row = memo(({ row }) => (
-  <div className="tetris__row">
+  <div className="tetrogrid__row">
     {row.map((cell, index) => (
       <Cell key={index} cell={cell} />
     ))}
   </div>
 ));
 
-const Cell = memo(({ cell }) => <span className={`tetris__cell tetris__cell-${cell}`}></span>);
+const Cell = memo(({ cell }) => <span className={`tetrogrid__cell tetrogrid__cell-${cell}`}></span>);
 
-export default memo(Tetris);
+export default memo(Tetrogrid);
