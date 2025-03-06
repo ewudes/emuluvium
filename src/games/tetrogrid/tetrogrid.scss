@@ -79,35 +79,48 @@ body {
     }
 
     &-red {
-      background-color: rgb(231, 4, 4);
-      border-bottom: 1px solid red;
-      border-right: 1px solid red;
-      border-top: 1px solid red;
-      border-left: 1px solid red;
+      background-color: #cf0202;
+      border-bottom: 1px solid #ff0000;
+      border-right: 1px solid #ff0000;
+      border-top: 1px solid #ff0000;
+      border-left: 1px solid #ff0000;
     }
 
     &-green {
-      background-color: rgb(1, 107, 1);
-      border-bottom: 1px solid green;
-      border-right: 1px solid green;
-      border-top: 1px solid green;
-      border-left: 1px solid green;
+      background-color: #008b00;
+      border-bottom: 1px solid #01f401;
+      border-right: 1px solid #01f401;
+      border-top: 1px solid #01f401;
+      border-left: 1px solid #01f401;
     }
 
     &-blue {
-      background-color: rgb(0, 0, 222);
-      border-bottom: 1px solid blue;
-      border-right: 1px solid blue;
-      border-top: 1px solid blue;
-      border-left: 1px solid blue;
+      background-color: #0000cf;
+      border-bottom: 1px solid #0000ff;
+      border-right: 1px solid #0000ff;
+      border-top: 1px solid #0000ff;
+      border-left: 1px solid #0000ff;
     }
 
     &-yellow {
-      background-color: rgb(217, 217, 1);
-      border-bottom: 1px solid yellow;
-      border-right: 1px solid yellow;
-      border-top: 1px solid yellow;
-      border-left: 1px solid yellow;
+      background-color: #d4d401;
+      border-bottom: 1px solid #ffff00;
+      border-right: 1px solid #ffff00;
+      border-top: 1px solid #ffff00;
+      border-left: 1px solid #ffff00;
     }
   }
+}
+
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
 }
