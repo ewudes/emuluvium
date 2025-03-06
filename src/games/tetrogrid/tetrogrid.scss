@@ -54,24 +54,28 @@ body {
     box-sizing: border-box;
     color: #808080;
 
-    &-0 {
-      background-color: #000000;
+    &-cyan {
+      background-color: #00d7d7;
+      border-bottom: 1px solid #00ffff;
+      border-right: 1px solid #00ffff;
+      border-top: 1px solid #00ffff;
+      border-left: 1px solid #00ffff;
     }
 
-    &-1 {
-      background-color: #00d;
-      border-bottom: 1px solid #00f;
-      border-right: 1px solid #00f;
-      border-top: 1px solid #00b;
-      border-left: 1px solid #00b;
+    &-orange {
+      background-color: #d48a00;
+      border-bottom: 1px solid #ffa500;
+      border-right: 1px solid #ffa500;
+      border-top: 1px solid #ffa500;
+      border-left: 1px solid #ffa500;
     }
 
-    &-2 {
-      background-color: green;
-    }
-
-    &-3 {
-      background-color: red;
+    &-purple {
+      background-color: #dc00dc;
+      border-bottom: 1px solid #b900b9;
+      border-right: 1px solid #b900b9;
+      border-top: 1px solid #b900b9;
+      border-left: 1px solid #b900b9;
     }
 
     &-red {
