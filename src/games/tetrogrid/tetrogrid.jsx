@@ -100,6 +100,7 @@ function createEmptyScene() {
 function useBoard() {
   const [scene, setScene] = useState(createEmptyScene);
   const [shape, setShape] = useState(randomShape);
+  const [nextShape, setNextShape] = useState(randomShape);
   const [position, setPosition] = useState({ x: 4, y: 0 });
   const [display, setDisplay] = useState(() => mergeIntoStage(scene, shape, position));
   const [score, setScore] = useState(0);
@@ -126,8 +127,9 @@ function useBoard() {
 
   setScene((prevScene) => mergeIntoStage(prevScene, shape, position));
 
-  const newShape = randomShape();
+  const newShape = nextShape;
   const newPosition = { x: 4, y: 0 };
+  const newNextShape = randomShape();
 
   if (!validPosition(newPosition, newShape)) {
     setGameOver(true);
@@ -135,6 +137,7 @@ function useBoard() {
   }
 
   setShape(newShape);
+  setNextShape(newNextShape);
   setPosition(newPosition);
   }
 
@@ -174,14 +177,14 @@ function useBoard() {
         }
       }
       for (let x = 0; x < COLUMN_COUNT; x++) {
-        newScene[0][x] = 0;
+        newScene[0][x] = null;
       }
       touched = true;
       setScore((oldVal) => oldVal + 1000);
     };
 
     for (let y = 0; y < ROW_COUNT; y++) {
-      if (newScene[y].every((cell) => cell !== 0)) {
+      if (newScene[y].every((cell) => cell !== null)) {
         removeRow(y);
       }
     }
@@ -226,10 +229,10 @@ function useBoard() {
   }
 
   function validPosition(position, shape) {
-    return shape.shape.every((point) => {
-      const tX = point.x + position.x;
-      const tY = point.y + position.y;
-      return tX >= 0 && tX < COLUMN_COUNT && tY >= 0 && tY < ROW_COUNT && scene[tY][tX] === 0;
+    return shape.shape.every(({ x, y }) => {
+      const tX = x + position.x;
+      const tY = y + position.y;
+      return tX >= 0 && tX < COLUMN_COUNT && tY >= 0 && tY < ROW_COUNT && scene[tY][tX] === null;
     });
   }
 
@@ -245,11 +248,11 @@ function useBoard() {
     }, [delay]);
   }
 
-  return [display, score, gameOver, onKeyDown];
+  return [display, score, gameOver, nextShape, onKeyDown];
 }
 
 const Tetrogrid = () => {
-  const [display, score, gameOver, onKeyDown] = useBoard();
+  const [display, score, gameOver, nextShape, onKeyDown] = useBoard();
   const eBoard = useRef();
 
   useEffect(() => {
@@ -263,7 +266,7 @@ const Tetrogrid = () => {
           <span className="tetrogrid__score-label">{score.toLocaleString()}</span>
         </div>
         <div className="tetrogrid__nextshape-wrap">
-          <span className="tetrogrid__nextshape">Next shape</span>
+          <NextShapeDisplay shape={nextShape} />
         </div>
       </div>
       <div className="tetrogrid">
@@ -279,6 +282,31 @@ const Tetrogrid = () => {
           <p>Score: {score}</p>
         </div>
       )}
+    </div>
+  );
+};
+
+const NextShapeDisplay = ({ shape }) => {
+  if (!shape) return null;
+
+  const gridSize = 4; // Размер мини-сетки
+  const miniGrid = Array.from({ length: gridSize }, () => Array(gridSize).fill(null));
+
+  shape.shape.forEach(({ x, y }) => {
+    if (x < gridSize && y < gridSize) {
+      miniGrid[y][x] = shape.color;
+    }
+  });
+
+  return (
+    <div className="next-shape-grid">
+      {miniGrid.map((row, rowIndex) => (
+        <div key={rowIndex} className="next-shape-row">
+          {row.map((cell, cellIndex) => (
+            <span key={cellIndex} className={`next-shape-cell ${cell ? `cell-${cell}` : ''}`}></span>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };
