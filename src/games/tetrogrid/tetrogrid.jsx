@@ -4,41 +4,72 @@ import "./tetrogrid.scss";
 const SHAPES = [
   {
     shape: [
-      { x: 0, y: 0 },
-      { x: 0, y: 1 },
-      { x: 1, y: 0 },
-      { x: 1, y: 1 },
+      { x: 0, y: 0 }, { x: 1, y: 0 },
+      { x: 0, y: 1 }, { x: 1, y: 1 },
     ],
     width: 2,
     height: 2,
+    color: "yellow",
   },
   {
     shape: [
-      { x: 0, y: 0 },
-      { x: 0, y: 1 },
-      { x: 0, y: 2 },
-      { x: 0, y: 3 },
+      { x: 0, y: 0 }, { x: 0, y: 1 },
+      { x: 0, y: 2 }, { x: 0, y: 3 },
     ],
     width: 1,
     height: 4,
+    color: "cyan",
   },
   {
     shape: [
-      { x: 0, y: 0 },
-      { x: 0, y: 1 },
-      { x: 0, y: 2 },
-      { x: 1, y: 2 },
+      { x: 0, y: 0 }, { x: 0, y: 1 },
+      { x: 0, y: 2 }, { x: 1, y: 2 },
     ],
     width: 2,
     height: 3,
+    color: "orange",
+  },
+  {
+    shape: [
+      { x: 1, y: 0 }, { x: 1, y: 1 },
+      { x: 1, y: 2 }, { x: 0, y: 2 },
+    ],
+    width: 2,
+    height: 3,
+    color: "blue",
+  },
+  {
+    shape: [
+      { x: 0, y: 0 }, { x: 1, y: 0 },
+      { x: 1, y: 1 }, { x: 2, y: 1 },
+    ],
+    width: 3,
+    height: 2,
+    color: "red",
+  },
+  {
+    shape: [
+      { x: 1, y: 0 }, { x: 2, y: 0 },
+      { x: 0, y: 1 }, { x: 1, y: 1 },
+    ],
+    width: 3,
+    height: 2,
+    color: "green",
+  },
+  {
+    shape: [
+      { x: 0, y: 0 }, { x: 1, y: 0 }, { x: 2, y: 0 },
+      { x: 1, y: 1 },
+    ],
+    width: 3,
+    height: 2,
+    color: "purple",
   },
 ];
 
-const SHAPES_COLOR = ["red", "green", "blue", "yellow"];
-
 function randomShape() {
   const shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
-  return { ...shape, color: SHAPES_COLOR[Math.floor(Math.random() * SHAPES_COLOR.length)] };
+  return { ...shape }; // Теперь цвет закреплен за фигурой
 }
 
 const ROW_COUNT = 20;
@@ -63,7 +94,7 @@ function mergeIntoStage(stage, shape, position) {
 }
 
 function createEmptyScene() {
-  return Array.from(Array(ROW_COUNT), () => Array(COLUMN_COUNT).fill(0));
+  return Array.from(Array(ROW_COUNT), () => Array(COLUMN_COUNT).fill(null));
 }
 
 function useBoard() {
@@ -209,7 +240,6 @@ const Tetrogrid = () => {
       <div className="tetrogrid__aside">
         <div className="tetrogrid__score-wrap">
           <span className="tetrogrid__score-label">{score.toLocaleString()}</span>
-          {/* <span></span> */}
         </div>
         <div className="tetrogrid__nextshape-wrap">
           <span className="tetrogrid__nextshape">Next shape</span>
@@ -234,6 +264,9 @@ const Row = memo(({ row }) => (
   </div>
 ));
 
-const Cell = memo(({ cell }) => <span className={`tetrogrid__cell tetrogrid__cell-${cell}`}></span>);
+const Cell = memo(({ cell }) => {
+  const cellClass = cell ? `tetrogrid__cell tetrogrid__cell-${cell}` : 'tetrogrid__cell';
+  return <span className={cellClass}></span>;
+});
 
 export default memo(Tetrogrid);
