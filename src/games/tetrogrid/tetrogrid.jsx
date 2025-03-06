@@ -69,7 +69,7 @@ const SHAPES = [
 
 function randomShape() {
   const shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
-  return { ...shape }; // Теперь цвет закреплен за фигурой
+  return { ...shape };
 }
 
 const ROW_COUNT = 20;
@@ -103,6 +103,7 @@ function useBoard() {
   const [position, setPosition] = useState({ x: 4, y: 0 });
   const [display, setDisplay] = useState(() => mergeIntoStage(scene, shape, position));
   const [score, setScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(updateDisplay, [scene, shape, position]);
   useEffect(removeFullLines, [scene]);
@@ -113,15 +114,28 @@ function useBoard() {
   }
 
   function tick() {
+    if (gameOver) return; 
+
     if (!movePosition(0, 1)) {
       placeShape();
     }
   }
 
   function placeShape() {
-    setScene((prevScene) => mergeIntoStage(prevScene, shape, position));
-    setShape(randomShape());
-    setPosition({ x: 4, y: 0 });
+    if (gameOver) return;
+
+  setScene((prevScene) => mergeIntoStage(prevScene, shape, position));
+
+  const newShape = randomShape();
+  const newPosition = { x: 4, y: 0 };
+
+  if (!validPosition(newPosition, newShape)) {
+    setGameOver(true);
+    return;
+  }
+
+  setShape(newShape);
+  setPosition(newPosition);
   }
 
   function rotateShape() {
@@ -178,6 +192,8 @@ function useBoard() {
   }
 
   function onKeyDown(event) {
+    if (gameOver) return;
+
     switch (event.key) {
       case "ArrowRight":
         movePosition(1, 0);
@@ -199,7 +215,12 @@ function useBoard() {
 
   function movePosition(x, y) {
     const res = { x: position.x + x, y: position.y + y };
-    if (!validPosition(res, shape)) return false;
+    if (!validPosition(res, shape)) {
+      if (y === -1) {
+        setGameOver(true); 
+      }
+      return false;
+    }
     setPosition(res);
     return true;
   }
@@ -224,11 +245,11 @@ function useBoard() {
     }, [delay]);
   }
 
-  return [display, score, onKeyDown];
+  return [display, score, gameOver, onKeyDown];
 }
 
 const Tetrogrid = () => {
-  const [display, score, onKeyDown] = useBoard();
+  const [display, score, gameOver, onKeyDown] = useBoard();
   const eBoard = useRef();
 
   useEffect(() => {
@@ -252,6 +273,12 @@ const Tetrogrid = () => {
           ))}
         </div>
       </div>
+      {gameOver && (
+        <div className="game-over">
+          <h2>Game Over!</h2>
+          <p>Score: {score}</p>
+        </div>
+      )}
     </div>
   );
 };
