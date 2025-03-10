@@ -127,20 +127,20 @@ function useBoard() {
   function placeShape() {
     if (gameOver) return;
 
-  setScene((prevScene) => mergeIntoStage(prevScene, shape, position));
+    setScene((prevScene) => mergeIntoStage(prevScene, shape, position));
 
-  const newShape = nextShape;
-  const newPosition = { x: 4, y: 0 };
-  const newNextShape = randomShape();
+    const newShape = nextShape;
+    const newPosition = { x: 4, y: 0 };
+    const newNextShape = randomShape();
 
-  if (!validPosition(newPosition, newShape)) {
-    setGameOver(true);
-    return;
-  }
+    if (!validPosition(newPosition, newShape)) {
+      setGameOver(true);
+      return;
+    }
 
-  setShape(newShape);
-  setNextShape(newNextShape);
-  setPosition(newPosition);
+    setShape(newShape);
+    setNextShape(newNextShape);
+    setPosition(newPosition);
 
     if (score >= 10000) {
       const newFallSpeed = Math.max(100, fallSpeed - 100);
@@ -268,12 +268,9 @@ const Tetrogrid = () => {
 
   return (
     <div className="tetrogrid-wrap">
-      <div className="tetrogrid__aside">
+      <div className="tetrogrid__aside tetrogrid__aside--left">
         <div className="tetrogrid__score-wrap">
           <span className="tetrogrid__score-label">{score.toLocaleString()}</span>
-        </div>
-        <div className="tetrogrid__nextshape-wrap">
-          <NextShapeDisplay shape={nextShape} />
         </div>
       </div>
       <div className="tetrogrid">
@@ -281,6 +278,14 @@ const Tetrogrid = () => {
           {display.map((row, index) => (
             <Row key={index} row={row} />
           ))}
+        </div>
+      </div>
+      <div className="tetrogrid__aside tetrogrid__aside--right">
+        <div className="tetrogrid__level-wrap">
+          <span className="tetrogrid__level-label">Салага</span>
+        </div>
+        <div className="tetrogrid__nextshape-wrap">
+          <NextShapeDisplay shape={nextShape} />
         </div>
       </div>
       {gameOver && (
