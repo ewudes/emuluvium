@@ -105,10 +105,12 @@ function useBoard() {
   const [display, setDisplay] = useState(() => mergeIntoStage(scene, shape, position));
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [fallSpeed, setFallSpeed] = useState(600);
 
   useEffect(updateDisplay, [scene, shape, position]);
   useEffect(removeFullLines, [scene]);
-  useInterval(tick, 600);
+
+  useInterval(tick, fallSpeed);
 
   function updateDisplay() {
     setDisplay(mergeIntoStage(scene, shape, position));
@@ -139,6 +141,11 @@ function useBoard() {
   setShape(newShape);
   setNextShape(newNextShape);
   setPosition(newPosition);
+
+    if (score >= 10000) {
+      const newFallSpeed = Math.max(100, fallSpeed - 100);
+      setFallSpeed(newFallSpeed);
+    }
   }
 
   function rotateShape() {
