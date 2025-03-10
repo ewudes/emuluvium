@@ -106,7 +106,7 @@ function useBoard() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [fallSpeed, setFallSpeed] = useState(600);
-  const [level, setLevel] = useState('Пирожочек');
+  const [level, setLevel] = useState('Пустяковое дельце');
 
   useEffect(updateDisplay, [scene, shape, position]);
   useEffect(removeFullLines, [scene]);
@@ -144,16 +144,16 @@ function useBoard() {
     setPosition(newPosition);
 
     if (score >= 1000) {
-      setLevel('Мужчинка');
+      setLevel('Шуточки кончились');
       setFallSpeed(300);
     } else if (score >= 5000) {
-      setLevel('Бедолага');
+      setLevel('Где мой страховочный трос?');
       setFallSpeed(200);
     } else if (score >= 10000) {
-      setLevel('Киборг');
+      setLevel('Кубок боли');
       setFallSpeed(100);
     } else {
-      setLevel('Пирожочек');
+      setLevel('Пустяковое дельце');
       setFallSpeed(600);
     }
 
