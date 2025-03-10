@@ -296,7 +296,7 @@ const Tetrogrid = () => {
 const NextShapeDisplay = ({ shape }) => {
   if (!shape) return null;
 
-  const gridSize = 4; // Размер мини-сетки
+  const gridSize = 4;
   const miniGrid = Array.from({ length: gridSize }, () => Array(gridSize).fill(null));
 
   shape.shape.forEach(({ x, y }) => {
