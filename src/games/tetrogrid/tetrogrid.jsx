@@ -106,6 +106,7 @@ function useBoard() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [fallSpeed, setFallSpeed] = useState(600);
+  const [level, setLevel] = useState('Пирожочек');
 
   useEffect(updateDisplay, [scene, shape, position]);
   useEffect(removeFullLines, [scene]);
@@ -142,10 +143,20 @@ function useBoard() {
     setNextShape(newNextShape);
     setPosition(newPosition);
 
-    if (score >= 10000) {
-      const newFallSpeed = Math.max(100, fallSpeed - 100);
-      setFallSpeed(newFallSpeed);
+    if (score >= 1000) {
+      setLevel('Мужчинка');
+      setFallSpeed(300);
+    } else if (score >= 5000) {
+      setLevel('Бедолага');
+      setFallSpeed(200);
+    } else if (score >= 10000) {
+      setLevel('Киборг');
+      setFallSpeed(100);
+    } else {
+      setLevel('Пирожочек');
+      setFallSpeed(600);
     }
+
   }
 
   function rotateShape() {
@@ -187,7 +198,7 @@ function useBoard() {
         newScene[0][x] = null;
       }
       touched = true;
-      setScore((oldVal) => oldVal + 1000);
+      setScore((oldVal) => oldVal + 100);
     };
 
     for (let y = 0; y < ROW_COUNT; y++) {
@@ -255,11 +266,11 @@ function useBoard() {
     }, [delay]);
   }
 
-  return [display, score, gameOver, nextShape, onKeyDown];
+  return [display, score, gameOver, nextShape, level, onKeyDown];
 }
 
 const Tetrogrid = () => {
-  const [display, score, gameOver, nextShape, onKeyDown] = useBoard();
+  const [display, score, gameOver, nextShape, level, onKeyDown] = useBoard();
   const eBoard = useRef();
 
   useEffect(() => {
@@ -282,7 +293,7 @@ const Tetrogrid = () => {
       </div>
       <div className="tetrogrid__aside tetrogrid__aside--right">
         <div className="tetrogrid__level-wrap">
-          <span className="tetrogrid__level-label">Салага</span>
+          <span className="tetrogrid__level-label">{level}</span>
         </div>
         <div className="tetrogrid__nextshape-wrap">
           <NextShapeDisplay shape={nextShape} />
