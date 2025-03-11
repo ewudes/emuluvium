@@ -159,7 +159,6 @@ function useBoard() {
       setLevel('Легкотня!');
       setFallSpeed(600);
     }
-
   }
 
   function rotateShape() {
@@ -234,17 +233,20 @@ function useBoard() {
       default:
         return;
     }
+
     event.preventDefault();
   }
 
   function movePosition(x, y) {
     const res = { x: position.x + x, y: position.y + y };
+
     if (!validPosition(res, shape)) {
       if (y === -1) {
         setGameOver(true); 
       }
       return false;
     }
+
     setPosition(res);
     return true;
   }
@@ -259,6 +261,7 @@ function useBoard() {
 
   function useInterval(callback, delay) {
     const callbackRef = useRef();
+
     useEffect(() => {
       callbackRef.current = callback;
     }, [callback]);
@@ -281,18 +284,17 @@ const Tetrogrid = () => {
   }, []);
 
   return (
-    <div className="tetrogrid-wrap">
-      <div className="bg-wrap">
-        <div className="bg"></div>
-        <div className="bg"></div>
+    <div className="tetrogrid">
+      <div className="tetrogrid__bg-wrap">
+        <div className="tetrogrid__bg"></div>
+        <div className="tetrogrid__bg"></div>
       </div>
-      
       <div className="tetrogrid__aside tetrogrid__aside--left">
         <div className="tetrogrid__score-wrap">
           <span className="tetrogrid__score-label">{score.toLocaleString()}</span>
         </div>
       </div>
-      <div className="tetrogrid">
+      <div className="tetrogrid__wrapper">
         <div className="tetrogrid__stars-wrap">
           <ul className="tetrogrid__stars">
             <li className="tetrogrid__star"></li>
@@ -317,7 +319,7 @@ const Tetrogrid = () => {
         </div>
       </div>
       {gameOver && (
-        <div className="game-over">
+        <div className="tetrogrid__game-over">
           <h2>Потрачено!</h2>
           <p>Счет: {score}</p>
         </div>
@@ -339,11 +341,11 @@ const NextShapeDisplay = ({ shape }) => {
   });
 
   return (
-    <div className="next-shape-grid">
+    <div className="tetrogrid__next-shape-grid">
       {miniGrid.map((row, rowIndex) => (
-        <div key={rowIndex} className="next-shape-row">
+        <div key={rowIndex} className="tetrogrid__next-shape-row">
           {row.map((cell, cellIndex) => (
-            <span key={cellIndex} className={`next-shape-cell ${cell ? `cell-${cell}` : ''}`}></span>
+            <span key={cellIndex} className={`tetrogrid__next-shape-cell ${cell ? `cell-${cell}` : ''}`}></span>
           ))}
         </div>
       ))}
