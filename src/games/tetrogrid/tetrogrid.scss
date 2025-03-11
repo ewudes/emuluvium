@@ -1,5 +1,42 @@
 body {
-  background-color: #000000;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+.bg-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  display: flex;
+  z-index: -1;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  background-image:          
+                  url('./../../vendor/backgroud/backgroundColorForest.png'),
+                  linear-gradient(180deg, rgba(207,239,252,1) 0%, rgba(207,239,252,1) 49%, rgba(209,106,76,1) 51%, rgba(209,106,76,1) 100%);
+  background-size: 50%;
+  background-position: center;
+  background-repeat: repeat-x;
+}
+
+@keyframes moveBackground {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.bg-wrap {
+  animation: moveBackground 20s linear infinite;
 }
 
 .tetrogrid-wrap {
@@ -11,6 +48,32 @@ body {
 
 .tetrogrid {
   display: flex;
+
+  &__stars-wrap {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__stars {
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  &__star {
+    display: block;
+    width: 50px;
+    height: 47px;
+    margin: 0 2px;
+    background-image: url('./../../vendor/decorate/star_outline.png');
+    background-size: contain;
+
+    &:first-child {
+      background-image: url('./../../vendor/decorate/star.png');
+    }
+  }
 
   &__aside {
     &--left {
@@ -25,7 +88,8 @@ body {
   &__score-wrap,
   &__level-wrap,
   &__nextshape-wrap {
-    border: 30px solid #808080;
+    border: 30px solid transparent;
+    border-image: url('./../../vendor/decorate/element_border_square.png') 32 round;
     width: 230px;
     text-align: center;
   }
@@ -33,33 +97,60 @@ body {
   &__level-wrap {
     margin-bottom: 30px;
     padding: 20px 0;
+    background-color: #cfeffc;
   }
 
   &__score-wrap {
-    margin-bottom: 486px;
+    margin-bottom: 480px;
     padding: 49px 0;
+    background-color: #cfeffc;
   }
 
   &__nextshape-wrap {
-    padding: 75px 0;
-    margin-bottom: 204px;
+    padding: 65px 0;
+    margin-bottom: 140px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image:
+    url('./../../vendor/backgroud/backgroundForest.png'),
+    linear-gradient(180deg, #cfeffc 0%, #cfeffc 49%, #b7e8fa 51%, #b7e8fa 100%);
+    background-repeat: no-repeat;
+    background-size: 150%;
+    background-position: 100% 30%;
   }
 
   &__board {
+    background-image:
+                    url('./../../vendor/backgroud/backgroundForest.png'),
+                    linear-gradient(180deg, #cfeffc 0%, #cfeffc 49%, #b7e8fa 51%, #b7e8fa 100%);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
     display: block;
     margin: 0 auto;
-    border: 30px solid #808080;
+    border: 30px solid transparent;
+    border-image: url('./../../vendor/decorate/element_border_square.png') 32 round;
   }
 
   &__score-label,
   &__level-wrap,
   &__nextshape {
     font-weight: bold;
-    color: #ffffff;
+    color: #3d3d3d;
+    font-size: 20px;
+  }
+
+  &__level-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+
+  &__level-label {
+    white-space: pre-line;
   }
 
   &__row {
@@ -72,40 +163,34 @@ body {
     height: 30px;
     box-sizing: border-box;
     color: #808080;
+    border: 15px solid transparent;
 
     &-cyan {
-      background-color: #00d7d7;
-      border: 1px solid #00ffff;
+      border-image: url('./../../vendor/decorate/element_cyan_square.png') 15 round;
     }
 
     &-orange {
-      background-color: #d48a00;
-      border: 1px solid #ffa500;
+      border-image: url('./../../vendor/decorate/element_orange_square.png') 15 round;
     }
 
     &-purple {
-      background-color: #dc00dc;
-      border: 1px solid #b900b9;
+      border-image: url('./../../vendor/decorate/element_purple_square.png') 15 round;
     }
 
     &-red {
-      background-color: #cf0202;
-      border: 1px solid #ff0000;
+      border-image: url('./../../vendor/decorate/element_red_square.png') 15 round;
     }
 
     &-green {
-      background-color: #008b00;
-      border: 1px solid #01f401;
+      border-image: url('./../../vendor/decorate/element_green_square.png') 15 round;
     }
 
     &-blue {
-      background-color: #0000cf;
-      border: 1px solid #0000ff;
+      border-image: url('./../../vendor/decorate/element_blue_square.png') 15 round;
     }
 
     &-yellow {
-      background-color: #d4d401;
-      border: 1px solid #ffff00;
+      border-image: url('./../../vendor/decorate/element_yellow_square.png') 15 round;
     }
   }
 }
@@ -113,7 +198,6 @@ body {
 .next-shape-grid {
   display: flex;
   flex-direction: column;
-  gap: 2px;
   align-items: center;
   justify-content: center;
   height: 100px;
@@ -122,23 +206,36 @@ body {
 
 .next-shape-row {
   display: flex;
-  gap: 2px;
   justify-content: center;
 }
 
 .next-shape-cell {
-  width: 20px;
-  height: 20px;
-  background-color: transparent;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 15px solid transparent;
 }
 
-.next-shape-cell.cell-cyan { background-color: #00d7d7; }
-.next-shape-cell.cell-orange { background-color: #d48a00; }
-.next-shape-cell.cell-purple { background-color: #dc00dc; }
-.next-shape-cell.cell-red { background-color: #cf0202; }
-.next-shape-cell.cell-green { background-color: #008b00; }
-.next-shape-cell.cell-blue { background-color: #0000cf; }
-.next-shape-cell.cell-yellow { background-color: #d4d401; }
+.next-shape-cell.cell-cyan {
+  border-image: url('./../../vendor/decorate/element_cyan_square.png') 15 round;
+}
+.next-shape-cell.cell-orange {
+  border-image: url('./../../vendor/decorate/element_orange_square.png') 15 round;
+}
+.next-shape-cell.cell-purple {
+  border-image: url('./../../vendor/decorate/element_purple_square.png') 15 round;
+}
+.next-shape-cell.cell-red {
+  border-image: url('./../../vendor/decorate/element_red_square.png') 15 round;
+}
+.next-shape-cell.cell-green {
+  border-image: url('./../../vendor/decorate/element_green_square.png') 15 round;
+}
+.next-shape-cell.cell-blue {
+  border-image: url('./../../vendor/decorate/element_blue_square.png') 15 round;
+}
+.next-shape-cell.cell-yellow {
+  border-image: url('./../../vendor/decorate/element_yellow_square.png') 15 round;
+}
 
 .game-over {
   position: absolute;
