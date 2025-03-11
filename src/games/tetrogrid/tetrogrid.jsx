@@ -286,21 +286,22 @@ const Tetrogrid = () => {
         <div className="bg"></div>
         <div className="bg"></div>
       </div>
-      <div className="tetrogrid__stars-wrap">
-        <ul className="tetrogrid__stars">
-          <li className="tetrogrid__star"></li>
-          <li className="tetrogrid__star"></li>
-          <li className="tetrogrid__star"></li>
-          <li className="tetrogrid__star"></li>
-          <li className="tetrogrid__star"></li>
-        </ul>
-      </div>
+      
       <div className="tetrogrid__aside tetrogrid__aside--left">
         <div className="tetrogrid__score-wrap">
           <span className="tetrogrid__score-label">{score.toLocaleString()}</span>
         </div>
       </div>
       <div className="tetrogrid">
+        <div className="tetrogrid__stars-wrap">
+          <ul className="tetrogrid__stars">
+            <li className="tetrogrid__star"></li>
+            <li className="tetrogrid__star"></li>
+            <li className="tetrogrid__star"></li>
+            <li className="tetrogrid__star"></li>
+            <li className="tetrogrid__star"></li>
+          </ul>
+        </div>
         <div ref={eBoard} className="tetrogrid__board" tabIndex={0} onKeyDown={onKeyDown}>
           {display.map((row, index) => (
             <Row key={index} row={row} />

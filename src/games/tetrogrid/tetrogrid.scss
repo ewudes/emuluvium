@@ -48,16 +48,15 @@ body {
 
 .tetrogrid {
   display: flex;
+  flex-direction: column;
 
   &__stars-wrap {
-    position: absolute;
-    top: 90px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    margin-bottom: 20px;
   }
 
   &__stars {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     display: flex;
   }
@@ -101,14 +100,14 @@ body {
   }
 
   &__score-wrap {
-    margin-bottom: 480px;
+    margin-bottom: 413px;
     padding: 49px 0;
     background-color: #cfeffc;
   }
 
   &__nextshape-wrap {
     padding: 65px 0;
-    margin-bottom: 140px;
+    margin-bottom: 72px;
     display: flex;
     flex-direction: column;
     align-items: center;
