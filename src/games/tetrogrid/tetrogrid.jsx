@@ -106,7 +106,7 @@ function useBoard() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [fallSpeed, setFallSpeed] = useState(600);
-  const [level, setLevel] = useState('Пустяковое дельце');
+  const [level, setLevel] = useState('Легкотня!');
 
   useEffect(updateDisplay, [scene, shape, position]);
   useEffect(removeFullLines, [scene]);
@@ -146,14 +146,17 @@ function useBoard() {
     if (score >= 1000) {
       setLevel('Шуточки кончились');
       setFallSpeed(300);
-    } else if (score >= 5000) {
-      setLevel('Где мой страховочный трос?');
+    } else if (score >= 2000) {
+      setLevel('Начинает припекать!');
       setFallSpeed(200);
-    } else if (score >= 10000) {
-      setLevel('Кубок боли');
+    } else if (score >= 5000) {
+      setLevel('Держись крепче, \n будет трясти!');
       setFallSpeed(100);
+    } else if (score >= 10000) {
+      setLevel('Дьявол звонит, \n пора страдать!!');
+      setFallSpeed(600);
     } else {
-      setLevel('Пустяковое дельце');
+      setLevel('Легкотня!');
       setFallSpeed(600);
     }
 
@@ -279,6 +282,19 @@ const Tetrogrid = () => {
 
   return (
     <div className="tetrogrid-wrap">
+      <div className="bg-wrap">
+        <div className="bg"></div>
+        <div className="bg"></div>
+      </div>
+      <div className="tetrogrid__stars-wrap">
+        <ul className="tetrogrid__stars">
+          <li className="tetrogrid__star"></li>
+          <li className="tetrogrid__star"></li>
+          <li className="tetrogrid__star"></li>
+          <li className="tetrogrid__star"></li>
+          <li className="tetrogrid__star"></li>
+        </ul>
+      </div>
       <div className="tetrogrid__aside tetrogrid__aside--left">
         <div className="tetrogrid__score-wrap">
           <span className="tetrogrid__score-label">{score.toLocaleString()}</span>
@@ -301,8 +317,8 @@ const Tetrogrid = () => {
       </div>
       {gameOver && (
         <div className="game-over">
-          <h2>Game Over!</h2>
-          <p>Score: {score}</p>
+          <h2>Потрачено!</h2>
+          <p>Счет: {score}</p>
         </div>
       )}
     </div>
