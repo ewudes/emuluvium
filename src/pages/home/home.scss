@@ -1,16 +1,5 @@
 body {
-  // font: 14px "bit-blocks", Futura, sans-serif;
-  // font: 14px "bit-future", Futura, sans-serif;
-  // font: 14px "bit-future-narrow", Futura, sans-serif;
-  // font: 14px "bit-high", Futura, sans-serif;
-  // font: 14px "bit-high-square", Futura, sans-serif;
-  // font: 14px "bit-mini", Futura, sans-serif;
-  // font: 14px "bit-mini-square", Futura, sans-serif;
-  // font: 14px "bit-mini-square-mono", Futura, sans-serif;
-  font: 14px "bit-pixel", Futura, sans-serif;
-  // font: 14px "bit-pixel-square", Futura, sans-serif;
-  // font: 14px "bit-rocket", Futura, sans-serif;
-  // font: 14px "bit-rocket-square", Futura, sans-serif;
+  font: 14px 'Century Gothic', Futura, sans-serif;
   margin: 0px;
 }
 
@@ -27,6 +16,7 @@ body {
     padding: 80px 0 0;
     width: 550px;
     text-align: center;
+    font-family: 'bit-pixel', Futura, sans-serif;
     font-size: 98px;
     color: #5ee3dc;
     border-bottom: 3px dashed #ca1415;
