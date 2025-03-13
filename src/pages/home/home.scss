@@ -57,8 +57,7 @@ body {
   &__title {
     margin: -100px auto 0;
     text-align: center;
-    width: 600px;
-    letter-spacing: 3px;
+    width: 630px;
     font-family: 'bit-pixel', Futura, sans-serif;
     font-size: 128px;
     color: #ffffff;
@@ -67,11 +66,15 @@ body {
   }
 
   &__list {
-    width: 600px;
+    width: 630px;
     margin: 0 auto;
     padding: 0;
     padding-top: 30px;
     list-style-type: none;
+  }
+
+  &__item {
+    text-align: center;
   }
 
   &__link {
