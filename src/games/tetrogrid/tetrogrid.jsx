@@ -1,79 +1,15 @@
 import React, { memo, useEffect, useRef, useState } from "react";
+import { Link } from 'react-router-dom';
+import { SHAPES } from './shapes';
 import "./tetrogrid.scss";
 
-const SHAPES = [
-  {
-    shape: [
-      { x: 0, y: 0 }, { x: 1, y: 0 },
-      { x: 0, y: 1 }, { x: 1, y: 1 },
-    ],
-    width: 2,
-    height: 2,
-    color: "yellow",
-  },
-  {
-    shape: [
-      { x: 0, y: 0 }, { x: 0, y: 1 },
-      { x: 0, y: 2 }, { x: 0, y: 3 },
-    ],
-    width: 1,
-    height: 4,
-    color: "cyan",
-  },
-  {
-    shape: [
-      { x: 0, y: 0 }, { x: 0, y: 1 },
-      { x: 0, y: 2 }, { x: 1, y: 2 },
-    ],
-    width: 2,
-    height: 3,
-    color: "orange",
-  },
-  {
-    shape: [
-      { x: 1, y: 0 }, { x: 1, y: 1 },
-      { x: 1, y: 2 }, { x: 0, y: 2 },
-    ],
-    width: 2,
-    height: 3,
-    color: "blue",
-  },
-  {
-    shape: [
-      { x: 0, y: 0 }, { x: 1, y: 0 },
-      { x: 1, y: 1 }, { x: 2, y: 1 },
-    ],
-    width: 3,
-    height: 2,
-    color: "red",
-  },
-  {
-    shape: [
-      { x: 1, y: 0 }, { x: 2, y: 0 },
-      { x: 0, y: 1 }, { x: 1, y: 1 },
-    ],
-    width: 3,
-    height: 2,
-    color: "green",
-  },
-  {
-    shape: [
-      { x: 0, y: 0 }, { x: 1, y: 0 }, { x: 2, y: 0 },
-      { x: 1, y: 1 },
-    ],
-    width: 3,
-    height: 2,
-    color: "purple",
-  },
-];
+const ROW_COUNT = 20;
+const COLUMN_COUNT = 10;
 
 function randomShape() {
   const shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
   return { ...shape };
 }
-
-const ROW_COUNT = 20;
-const COLUMN_COUNT = 10;
 
 function copyScene(scene) {
   return scene.map((row) => row.slice());
@@ -107,6 +43,7 @@ function useBoard() {
   const [gameOver, setGameOver] = useState(false);
   const [fallSpeed, setFallSpeed] = useState(600);
   const [level, setLevel] = useState('Легкотня!');
+  const [paused, setPaused] = useState(false);
 
   useEffect(updateDisplay, [scene, shape, position]);
   useEffect(removeFullLines, [scene]);
@@ -118,7 +55,7 @@ function useBoard() {
   }
 
   function tick() {
-    if (gameOver) return; 
+    if (gameOver || paused) return;
 
     if (!movePosition(0, 1)) {
       placeShape();
@@ -159,6 +96,18 @@ function useBoard() {
       setLevel('Легкотня!');
       setFallSpeed(600);
     }
+  }
+
+  function restartGame() {
+    setScene(createEmptyScene());
+    setShape(randomShape());
+    setNextShape(randomShape());
+    setPosition({ x: 4, y: 0 });
+    setScore(0);
+    setGameOver(false);
+    setPaused(false);
+    setFallSpeed(600);
+    setLevel('Легкотня!');
   }
 
   function rotateShape() {
@@ -230,11 +179,18 @@ function useBoard() {
       case "ArrowUp":
         rotateShape();
         break;
+      case " ":
+        togglePause();
+        break;
       default:
         return;
     }
 
     event.preventDefault();
+  }
+
+  function togglePause() {
+    setPaused((prev) => !prev);
   }
 
   function movePosition(x, y) {
@@ -272,20 +228,25 @@ function useBoard() {
     }, [delay]);
   }
 
-  return [display, score, gameOver, nextShape, level, onKeyDown];
+  return [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame];
 }
 
 const Tetrogrid = () => {
-  const [display, score, gameOver, nextShape, level, onKeyDown] = useBoard();
+  const [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame] = useBoard();
   const eBoard = useRef();
 
   useEffect(() => {
     if (eBoard.current) eBoard.current.focus();
   }, []);
 
+  const handleRestart = () => {
+    restartGame();
+    if (eBoard.current) eBoard.current.focus();
+  };
+
   return (
     <div className="tetrogrid">
-      <div className="tetrogrid__bg-wrap">
+      <div className={`tetrogrid__bg-wrap ${gameOver || paused ? 'tetrogrid__bg-stop' : ''}`}>
         <div className="tetrogrid__bg"></div>
         <div className="tetrogrid__bg"></div>
       </div>
@@ -322,6 +283,15 @@ const Tetrogrid = () => {
         <div className="tetrogrid__game-over">
           <h2>Потрачено!</h2>
           <p>Счет: {score}</p>
+          <div className="tetrogrid__game-over-btns">
+            <button className="tetrogrid__restart-button" onClick={handleRestart}>Играть заново</button>
+            <Link to="/" className="tetrogrid__home-button">Home</Link>
+          </div>
+        </div>
+      )}
+      {paused && (
+        <div className="tetrogrid__paused">
+          <h2>Пауза</h2>
         </div>
       )}
     </div>
