@@ -84,5 +84,10 @@ body {
     font-family: 'bit-pixel', Futura, sans-serif;
     font-weight: bold;
     text-shadow: 1px 1px 2px #000000;
+    transition: font .5s;
+
+    &:hover {
+      font-size: 64px;
+    }
   }
 }
