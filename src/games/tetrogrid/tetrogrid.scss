@@ -227,12 +227,12 @@ body {
     border-image: url('./../../vendor/decorate/element_yellow_square.png') 15 round;
   }
 
-  &__game-over {
+  &__game-over,
+  &__paused {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-height: 135px;
     background-color: #14a0d8;
     border: 5px solid transparent;
     border-image: url('./../../vendor/decorate/border-overlay.png') 3 round;
@@ -246,6 +246,15 @@ body {
     & > h2 {
       margin: 0;
     }
+  }
+
+  &__game-over {
+    min-height: 135px;
+  }
+
+  &__paused {
+    height: 50px;
+    
   }
 
   &__game-over-btns {
