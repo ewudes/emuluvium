@@ -61,7 +61,7 @@ body {
     background-image: url('./../../vendor/decorate/star_outline.png');
     background-size: contain;
 
-    &:first-child {
+    &--active {
       background-image: url('./../../vendor/decorate/star.png');
     }
   }

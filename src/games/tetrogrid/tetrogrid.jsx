@@ -219,11 +219,11 @@ function useBoard() {
     }, [delay]);
   }
 
-  return [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame];
+  return [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed];
 }
 
 const Tetrogrid = () => {
-  const [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame] = useBoard();
+  const [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed] = useBoard();
   const eBoard = useRef();
 
   useEffect(() => {
@@ -234,6 +234,19 @@ const Tetrogrid = () => {
     restartGame();
     if (eBoard.current) eBoard.current.focus();
   };
+
+  useEffect(() => {
+    const stars = document.querySelectorAll(".tetrogrid__star");
+    stars.forEach((star, index) => {
+      const speedNormalized = Math.round((SPEED_LEVEL.DEFAULT - fallSpeed) / 100);
+
+      if (index < speedNormalized) {
+        star.classList.add("tetrogrid__star--active");
+      } else {
+        star.classList.remove("tetrogrid__star--active");
+      }
+    });
+  }, [fallSpeed]);
 
   return (
     <div className="tetrogrid">
