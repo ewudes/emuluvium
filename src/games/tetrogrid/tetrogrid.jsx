@@ -44,6 +44,10 @@ function useBoard() {
   const [fallSpeed, setFallSpeed] = useState(SPEED_LEVEL.DEFAULT);
   const [level, setLevel] = useState(DIFFICULTY_LEVEL.DEFAULT);
   const [paused, setPaused] = useState(false);
+  const [highScore, setHighScore] = useState(() => {
+    const savedHighScore = localStorage.getItem("highScore");
+    return savedHighScore ? parseInt(savedHighScore, 10) : 0;
+  });
 
   useEffect(updateDisplay, [scene, shape, position]);
   useEffect(removeFullLines, [scene]);
@@ -88,8 +92,12 @@ function useBoard() {
     setFallSpeed(selectedLevel.SPEED);
   }, [score]);
 
-
   function restartGame() {
+    if (score > highScore) {
+      setHighScore(score);
+      localStorage.setItem("highScore", score.toString());
+    }
+
     setScene(createEmptyScene());
     setShape(randomShape());
     setNextShape(randomShape());
@@ -219,11 +227,11 @@ function useBoard() {
     }, [delay]);
   }
 
-  return [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed];
+  return [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed, highScore];
 }
 
 const Tetrogrid = () => {
-  const [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed] = useBoard();
+  const [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed, highScore] = useBoard();
   const eBoard = useRef();
 
   useEffect(() => {
@@ -256,7 +264,9 @@ const Tetrogrid = () => {
       </div>
       <div className="tetrogrid__aside tetrogrid__aside--left">
         <div className="tetrogrid__score-wrap">
-          <span className="tetrogrid__score-label">{score.toLocaleString()}</span>
+          <span className="tetrogrid__score-label">Текущий: {score.toLocaleString()}</span>
+          <span className="tetrogrid__score-label">Лучший: {highScore.toLocaleString()}</span>
+          <span className="tetrogrid__score-label">Ранг: N/A</span>
         </div>
       </div>
       <div className="tetrogrid__wrapper">
