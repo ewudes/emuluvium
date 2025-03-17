@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useRef, useState } from "react";
 import { Link } from 'react-router-dom';
-import { SHAPES } from './shapes';
+import { SHAPES, DIFFICULTY_LEVEL, SPEED_LEVEL, DIFFICULTY_LEVELS } from './const';
 import "./tetrogrid.scss";
 
 const ROW_COUNT = 20;
@@ -41,8 +41,8 @@ function useBoard() {
   const [display, setDisplay] = useState(() => mergeIntoStage(scene, shape, position));
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
-  const [fallSpeed, setFallSpeed] = useState(600);
-  const [level, setLevel] = useState('Легкотня!');
+  const [fallSpeed, setFallSpeed] = useState(SPEED_LEVEL.DEFAULT);
+  const [level, setLevel] = useState(DIFFICULTY_LEVEL.DEFAULT);
   const [paused, setPaused] = useState(false);
 
   useEffect(updateDisplay, [scene, shape, position]);
@@ -79,24 +79,15 @@ function useBoard() {
     setShape(newShape);
     setNextShape(newNextShape);
     setPosition(newPosition);
-
-    if (score >= 1000) {
-      setLevel('Шуточки кончились');
-      setFallSpeed(300);
-    } else if (score >= 2000) {
-      setLevel('Начинает припекать!');
-      setFallSpeed(200);
-    } else if (score >= 5000) {
-      setLevel('Держись крепче, \n будет трясти!');
-      setFallSpeed(100);
-    } else if (score >= 10000) {
-      setLevel('Дьявол звонит, \n пора страдать!!');
-      setFallSpeed(600);
-    } else {
-      setLevel('Легкотня!');
-      setFallSpeed(600);
-    }
   }
+
+  useEffect(() => {
+    const selectedLevel = DIFFICULTY_LEVELS.findLast(({ THRESHOLD }) => score >= THRESHOLD) || { DESCRIPTION: DIFFICULTY_LEVEL.DEFAULT, SPEED: SPEED_LEVEL.DEFAULT };
+    
+    setLevel(selectedLevel.DESCRIPTION);
+    setFallSpeed(selectedLevel.SPEED);
+  }, [score]);
+
 
   function restartGame() {
     setScene(createEmptyScene());
@@ -106,8 +97,8 @@ function useBoard() {
     setScore(0);
     setGameOver(false);
     setPaused(false);
-    setFallSpeed(600);
-    setLevel('Легкотня!');
+    setFallSpeed(SPEED_LEVEL.DEFAULT);
+    setLevel(DIFFICULTY_LEVEL.DEFAULT);
   }
 
   function rotateShape() {
