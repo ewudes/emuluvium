@@ -294,6 +294,7 @@ const Tetrogrid = () => {
         </div>
       </div>
       {gameOver && (
+        <>
         <div className="tetrogrid__game-over">
           <h2>Потрачено!</h2>
           <p>Счет: {score}</p>
@@ -302,11 +303,16 @@ const Tetrogrid = () => {
             <Link to="/" className="tetrogrid__home-button">Home</Link>
           </div>
         </div>
+          <div className="tetrogrid__overlay"></div>
+        </>
       )}
       {paused && (
+        <>
         <div className="tetrogrid__paused">
           <h2>Пауза</h2>
         </div>
+          <div className="tetrogrid__overlay"></div>  
+        </> 
       )}
     </div>
   );
