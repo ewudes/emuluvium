@@ -238,6 +238,41 @@ const Tetrogrid = () => {
     if (eBoard.current) eBoard.current.focus();
   }, []);
 
+  useEffect(() => {
+    const ensureFocus = () => {
+      if (document.activeElement !== eBoard.current) {
+        eBoard.current?.focus();
+      }
+    };
+  
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        setTimeout(ensureFocus, 0);
+      }
+    };
+  
+    const handleClickAnywhere = (event) => {
+      if (!eBoard.current?.contains(event.target)) {
+        setTimeout(ensureFocus, 0);
+      }
+    };
+  
+    window.addEventListener("blur", ensureFocus);
+    window.addEventListener("focus", ensureFocus);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener("click", handleClickAnywhere);
+  
+    ensureFocus();
+  
+    return () => {
+      window.removeEventListener("blur", ensureFocus);
+      window.removeEventListener("focus", ensureFocus);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      document.removeEventListener("click", handleClickAnywhere);
+    };
+  }, []);
+  
+
   const handleRestart = () => {
     restartGame();
     if (eBoard.current) eBoard.current.focus();
@@ -295,22 +330,22 @@ const Tetrogrid = () => {
       </div>
       {gameOver && (
         <>
-        <div className="tetrogrid__game-over">
-          <h2>Потрачено!</h2>
-          <p>Счет: {score}</p>
-          <div className="tetrogrid__game-over-btns">
-            <button className="tetrogrid__restart-button" onClick={handleRestart}>Играть заново</button>
-            <Link to="/" className="tetrogrid__home-button">Home</Link>
+          <div className="tetrogrid__game-over">
+            <h2>Потрачено!</h2>
+            <p>Счет: {score}</p> 
+            <div className="tetrogrid__game-over-btns">
+              <button className="tetrogrid__restart-button" onClick={handleRestart}>Играть заново</button>
+              <Link to="/" className="tetrogrid__home-button">Home</Link>
+            </div>
           </div>
-        </div>
           <div className="tetrogrid__overlay"></div>
         </>
       )}
       {paused && (
         <>
-        <div className="tetrogrid__paused">
-          <h2>Пауза</h2>
-        </div>
+          <div className="tetrogrid__paused">
+            <h2>Пауза</h2>
+          </div>
           <div className="tetrogrid__overlay"></div>  
         </> 
       )}
