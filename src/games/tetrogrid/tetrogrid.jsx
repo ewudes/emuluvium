@@ -302,6 +302,12 @@ const Tetrogrid = () => {
           <span className="tetrogrid__score-label">Текущий: <span>{score.toLocaleString()}</span></span>
           <span className="tetrogrid__score-label">Лучший: <span>{highScore.toLocaleString()}</span></span>
           <span className="tetrogrid__score-label">Ранг: <span>N/A</span></span>
+          <span className="tetrogrid__score-label tetrogrid__score-label--tasks">Задания</span>
+          <ul className="tetrogrid__tasks-list">
+            <li className="tetrogrid__tasks-item">N/A</li>
+            <li className="tetrogrid__tasks-item">N/A</li>
+            <li className="tetrogrid__tasks-item">N/A</li>
+          </ul>
         </div>
       </div>
       <div className="tetrogrid__wrapper">
@@ -331,6 +337,11 @@ const Tetrogrid = () => {
       {gameOver && (
         <>
           <div className="tetrogrid__game-over">
+            <ul className="tetrogrid__rang-wrap">
+              <li className="tetrogrid__rang-item"></li>
+              <li className="tetrogrid__rang-item"></li>
+              <li className="tetrogrid__rang-item"></li>
+            </ul>
             <h2>Потрачено!</h2>
             <p>Счет: {score}</p>
             <p>Время: N/A</p>

@@ -156,9 +156,9 @@ body {
   }
 
   &__score-wrap {
-    margin-bottom: 363px;
+    margin-bottom: 328px;
     padding-top: 10px;
-    min-height: 160px;
+    min-height: 195px;
     background-color: #cfeffc;
   }
 
@@ -253,6 +253,49 @@ body {
 
     & > span {
       margin-left: auto;
+    }
+
+    &--tasks {
+      display: block;
+      text-align: center;
+      border-bottom: 3px dashed;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 15px;
+      color: #6f6e6e;
+    }
+  }
+
+  &__tasks-list {
+    padding: 0;
+    list-style-type: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #6f6e6e;
+  }
+
+  &__tasks-item {
+    position: relative;
+    font-family: 'bit-opirus', Futura, sans-serif;
+    font-size: 20px;
+    line-height: .9;
+    text-align: left;
+    padding-left: 30px;
+
+    &::before {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-block;
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #3b3b3b;
+      background-image: url('./../../vendor/decorate/checkpoint_out.png');
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
 
@@ -388,9 +431,46 @@ body {
     line-height: .8;
     z-index: 9;
 
+    & > h2 {
+      margin-top: 25px;
+    }
+
     & > p {
       margin-top: 10px;
       margin-bottom: 10px;
+    }
+  }
+
+  &__rang-wrap {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__rang-item {
+    width: 90px;
+    height: 90px;
+    background-image: url('./../../vendor/decorate/level_out.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: translateY(-70px);
+
+    &:first-child {
+      width: 80px;
+      height: 80px;
+      transform: translate(23px, -39px) rotate(50deg);
+    }
+
+    &:last-child {
+      width: 80px;
+      height: 80px;
+      transform: translate(-21px, -39px) rotate(20deg);
+      z-index: -1;
     }
   }
 
