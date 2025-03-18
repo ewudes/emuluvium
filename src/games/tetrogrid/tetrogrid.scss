@@ -244,6 +244,9 @@ body {
 
   &__score-label {
     display: flex;
+    font-family: 'bit-opirus', Futura, sans-serif;
+    font-size: 28px;
+    line-height: .9;
     text-align: left;
     padding-left: 10px;
     padding-right: 10px;
@@ -262,6 +265,9 @@ body {
 
   &__level-label {
     white-space: pre-line;
+    font-family: 'bit-opirus', Futura, sans-serif;
+    font-size: 32px;
+    line-height: .9;
   }
 
   &__row {
@@ -377,12 +383,21 @@ body {
   &__game-over {
     min-height: 135px;
     padding-bottom: 30px;
+    font-family: 'bit-opirus', Futura, sans-serif;
+    font-size: 34px;
+    line-height: .8;
     z-index: 9;
 
     & > p {
       margin-top: 10px;
       margin-bottom: 10px;
     }
+  }
+
+  &__paused {
+    font-family: 'bit-opirus', Futura, sans-serif;
+    font-size: 36px;
+    line-height: .9;
   }
  
   &__overlay {
