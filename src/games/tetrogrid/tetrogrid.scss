@@ -21,8 +21,8 @@ body {
     z-index: -1;
 
     &--default {
-    animation: moveBackground 20s linear infinite;
-  }
+      animation: moveBackground 20s linear infinite;
+    }
 
     &--beginner {
       animation: moveBackground 15s linear infinite;
@@ -243,9 +243,14 @@ body {
   }
 
   &__score-label {
-    display: block;
+    display: flex;
     text-align: left;
     padding-left: 10px;
+    padding-right: 10px;
+
+    & > span {
+      margin-left: auto;
+    }
   }
 
   &__level-wrap {
@@ -371,7 +376,13 @@ body {
 
   &__game-over {
     min-height: 135px;
+    padding-bottom: 30px;
     z-index: 9;
+
+    & > p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
   }
  
   &__overlay {
@@ -380,7 +391,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: hsla(0, 0%, 0%, .5);
+    background-color: rgba(0, 0, 0, .5);
   }
 
   &__paused {
@@ -441,9 +452,3 @@ body {
     transform: translateX(-50%);
   }
 }
-
-
-
-
-
-

@@ -299,9 +299,9 @@ const Tetrogrid = () => {
       </div>
       <div className="tetrogrid__aside tetrogrid__aside--left">
         <div className="tetrogrid__score-wrap">
-          <span className="tetrogrid__score-label">Текущий: {score.toLocaleString()}</span>
-          <span className="tetrogrid__score-label">Лучший: {highScore.toLocaleString()}</span>
-          <span className="tetrogrid__score-label">Ранг: N/A</span>
+          <span className="tetrogrid__score-label">Текущий: <span>{score.toLocaleString()}</span></span>
+          <span className="tetrogrid__score-label">Лучший: <span>{highScore.toLocaleString()}</span></span>
+          <span className="tetrogrid__score-label">Ранг: <span>N/A</span></span>
         </div>
       </div>
       <div className="tetrogrid__wrapper">
@@ -332,7 +332,8 @@ const Tetrogrid = () => {
         <>
           <div className="tetrogrid__game-over">
             <h2>Потрачено!</h2>
-            <p>Счет: {score}</p> 
+            <p>Счет: {score}</p>
+            <p>Время: N/A</p>
             <div className="tetrogrid__game-over-btns">
               <button className="tetrogrid__restart-button" onClick={handleRestart}>Играть заново</button>
               <Link to="/" className="tetrogrid__home-button">Home</Link>
