@@ -19,7 +19,26 @@ body {
     height: 100%;
     display: flex;
     z-index: -1;
+
+    &--default {
     animation: moveBackground 20s linear infinite;
+  }
+
+    &--beginner {
+      animation: moveBackground 15s linear infinite;
+    }
+
+    &--apprentice {
+      animation: moveBackground 10s linear infinite;
+    }
+
+    &--veteran {
+      animation: moveBackground 6s linear infinite;
+    }
+
+    &--legend {
+      animation: moveBackground 3s linear infinite;
+    }
   }
 
   &__bg-stop {
@@ -29,12 +48,57 @@ body {
   &__bg {
     width: 100%;
     height: 100%;
-    background-image:          
-                    url('./../../vendor/backgroud/backgroundColorForest.png'),
-                    linear-gradient(180deg, rgba(207,239,252,1) 0%, rgba(207,239,252,1) 49%, rgba(209,106,76,1) 51%, rgba(209,106,76,1) 100%);
     background-size: 50%;
     background-position: center;
     background-repeat: repeat-x;
+
+    &--grass {
+      background-image:          
+                      url('./../../vendor/backgroud/backgroundColorGrass.png'),
+                      linear-gradient(
+                        180deg,
+                        #cfeffc 0%, 
+                        #cfeffc 49%, 
+                        #22be75 51%, 
+                        #22be75 100%
+                      );
+    }
+
+    &--desert {
+      background-image:          
+                      url('./../../vendor/backgroud/backgroundColorDesert.png'),
+                      linear-gradient(
+                        180deg,
+                        #cfeffc 0%, 
+                        #cfeffc 49%, 
+                        #f0e3c1 51%, 
+                        #f0e3c1 100%
+                      );
+    }
+
+    &--fall {
+      background-image:          
+                      url('./../../vendor/backgroud/backgroundColorFall.png'),
+                      linear-gradient(
+                        180deg,
+                        #cfeffc 0%,
+                        #cfeffc 49%,
+                        #d16a4c 51%,
+                        #d16a4c 100%
+                      );
+    }
+
+    &--forest {
+      background-image:          
+                      url('./../../vendor/backgroud/backgroundColorForest.png'),
+                      linear-gradient(
+                        180deg,
+                        #cfeffc 0%,
+                        #cfeffc 49%,
+                        #d16a4c 51%,
+                        #d16a4c 100%
+                      );
+    }
   }
 
   &__wrapper {
@@ -105,18 +169,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image:
-                    url('./../../vendor/backgroud/backgroundForest.png'),
-                    linear-gradient(180deg, #cfeffc 0%, #cfeffc 49%, #b7e8fa 51%, #b7e8fa 100%);
     background-repeat: no-repeat;
     background-size: 150%;
     background-position: 100% 30%;
   }
 
   &__board {
-    background-image:
-                    url('./../../vendor/backgroud/backgroundForest.png'),
-                    linear-gradient(180deg, #cfeffc 0%, #cfeffc 49%, #b7e8fa 51%, #b7e8fa 100%);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
@@ -124,6 +182,56 @@ body {
     margin: 0 auto;
     border: 30px solid transparent;
     border-image: url('./../../vendor/decorate/element_border_square.png') 32 round;
+  }
+
+  &__bg-inside {
+    &--forest {
+      background-image:
+                      url('./../../vendor/backgroud/backgroundForest.png'),
+                      linear-gradient(
+                        180deg,
+                        #cfeffc 0%,
+                        #cfeffc 49%,
+                        #b7e8fa 51%,
+                        #b7e8fa 100%
+                      );
+    }
+
+    &--castles {
+      background-image:
+                      url('./../../vendor/backgroud/backgroundCastles.png'),
+                      linear-gradient(
+                        180deg,
+                        #cfeffc 0%,
+                        #cfeffc 49%,
+                        #b7e8fa 51%,
+                        #b7e8fa 100%
+                      );
+    }
+
+    &--desert {
+      background-image:
+                      url('./../../vendor/backgroud/backgroundDesert.png'),
+                      linear-gradient(
+                        180deg,
+                        #cfeffc 0%,
+                        #cfeffc 49%,
+                        #b7e8fa 51%,
+                        #b7e8fa 100%
+                      );
+    }
+
+    &--empty {
+      background-image:
+                      url('./../../vendor/backgroud/backgroundEmpty.png'),
+                      linear-gradient(
+                        180deg,
+                        #cfeffc 0%,
+                        #cfeffc 49%,
+                        #b7e8fa 51%,
+                        #b7e8fa 100%
+                      );
+    }
   }
 
   &__score-label,

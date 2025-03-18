@@ -293,9 +293,9 @@ const Tetrogrid = () => {
 
   return (
     <div className="tetrogrid">
-      <div className={`tetrogrid__bg-wrap ${gameOver || paused ? 'tetrogrid__bg-stop' : ''}`}>
-        <div className="tetrogrid__bg"></div>
-        <div className="tetrogrid__bg"></div>
+      <div className={`tetrogrid__bg-wrap tetrogrid__bg-wrap--default ${gameOver || paused ? 'tetrogrid__bg-stop' : ''}`}>
+        <div className="tetrogrid__bg tetrogrid__bg--grass"></div>
+        <div className="tetrogrid__bg tetrogrid__bg--grass"></div>
       </div>
       <div className="tetrogrid__aside tetrogrid__aside--left">
         <div className="tetrogrid__score-wrap">
@@ -314,7 +314,7 @@ const Tetrogrid = () => {
             <li className="tetrogrid__star"></li>
           </ul>
         </div>
-        <div ref={eBoard} className="tetrogrid__board" tabIndex={0} onKeyDown={onKeyDown}>
+        <div ref={eBoard} className="tetrogrid__board tetrogrid__bg-inside--empty" tabIndex={0} onKeyDown={onKeyDown}>
           {display.map((row, index) => (
             <Row key={index} row={row} />
           ))}
@@ -324,7 +324,7 @@ const Tetrogrid = () => {
         <div className="tetrogrid__level-wrap">
           <span className="tetrogrid__level-label">{level}</span>
         </div>
-        <div className="tetrogrid__nextshape-wrap">
+        <div className="tetrogrid__nextshape-wrap tetrogrid__bg-inside--empty">
           <NextShapeDisplay shape={nextShape} />
         </div>
       </div>
