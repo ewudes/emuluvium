@@ -66,10 +66,10 @@ export const SHAPES = [
 
 export const DIFFICULTY_LEVEL = {
   DEFAULT: 'Легкотня!',
-  BEGINNER: 'Шуточки кончились',
-  APPRENTICE: 'Начинает припекать!',
+  BEGINNER: 'Шуточки \n кончились',
+  APPRENTICE: 'Начинает \n припекать!',
   VETERAN: 'Держись крепче, \n будет трясти!',
-  MASTER: 'Воплощение отчаяния',
+  MASTER: 'Воплощение \n отчаяния',
   LEGEND: 'Дьявол звонит, \n пора страдать!!',
 }
 
