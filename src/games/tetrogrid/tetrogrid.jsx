@@ -244,7 +244,7 @@ function useBoard() {
 
 function formatGameTime(seconds) {
   if (seconds < 60) {
-    return `${seconds} секунд`;
+    return `${seconds} сек`;
   }
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
