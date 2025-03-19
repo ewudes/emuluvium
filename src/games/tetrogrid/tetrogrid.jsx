@@ -48,6 +48,17 @@ function useBoard() {
     const savedHighScore = localStorage.getItem("highScore");
     return savedHighScore ? parseInt(savedHighScore, 10) : 0;
   });
+  const [gameTime, setGameTime] = useState(0);
+  const timerRef = useRef(null);
+
+  useEffect(() => {
+    if (!gameOver && !paused) {
+      timerRef.current = setInterval(() => {
+        setGameTime((prevTime) => prevTime + 1);
+      }, 1000);
+    }
+    return () => clearInterval(timerRef.current);
+  }, [gameOver, paused]); 
 
   useEffect(updateDisplay, [scene, shape, position]);
   useEffect(removeFullLines, [scene]);
@@ -107,6 +118,7 @@ function useBoard() {
     setPaused(false);
     setFallSpeed(SPEED_LEVEL.DEFAULT);
     setLevel(DIFFICULTY_LEVEL.DEFAULT);
+    setGameTime(0);
   }
 
   function rotateShape() {
@@ -227,11 +239,20 @@ function useBoard() {
     }, [delay]);
   }
 
-  return [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed, highScore];
+  return [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed, highScore, gameTime];
+}
+
+function formatGameTime(seconds) {
+  if (seconds < 60) {
+    return `${seconds} секунд`;
+  }
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes} мин ${remainingSeconds} сек`;
 }
 
 const Tetrogrid = () => {
-  const [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed, highScore] = useBoard();
+  const [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed, highScore, gameTime] = useBoard();
   const eBoard = useRef();
 
   useEffect(() => {
@@ -344,7 +365,7 @@ const Tetrogrid = () => {
             </ul>
             <h2>Потрачено!</h2>
             <p>Счет: {score}</p>
-            <p>Время: N/A</p>
+            <p>Время: {formatGameTime(gameTime)}</p>
             <div className="tetrogrid__game-over-btns">
               <button className="tetrogrid__restart-button" onClick={handleRestart}>Играть заново</button>
               <Link to="/" className="tetrogrid__home-button">Home</Link>
