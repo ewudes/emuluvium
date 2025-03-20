@@ -106,6 +106,31 @@ body {
     flex-direction: column;
   }
 
+  &__profile {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 30px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-image:
+                    url('./../../vendor/decorate/profile-icon.png'),
+                    url('./../../vendor/decorate/border-profile.png');
+    background-repeat: no-repeat;
+    background-size: 60%, contain;
+    background-position: center 13px, center;
+    background-color: #3d3d3d;
+    cursor: pointer;
+    transition: 1s;
+
+    &:hover { 
+      background-image:
+                      url('./../../vendor/decorate/profile-icon.png'),
+                      url('./../../vendor/decorate/border-profile-hover.png');
+    }
+  }
+
   &__stars-wrap {
     display: flex;
     margin-bottom: 20px;

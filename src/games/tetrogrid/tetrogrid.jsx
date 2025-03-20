@@ -318,6 +318,13 @@ const Tetrogrid = () => {
         <div className="tetrogrid__bg tetrogrid__bg--grass"></div>
         <div className="tetrogrid__bg tetrogrid__bg--grass"></div>
       </div>
+      <div className="hamburger not-active">
+        <span className="hamburger__item"></span>
+        <span className="hamburger__item"></span>
+        <span className="hamburger__item"></span>
+      </div>
+      <div className="tetrogrid__nav"></div>
+      <div className="tetrogrid__profile"></div>
       <div className="tetrogrid__aside tetrogrid__aside--left">
         <div className="tetrogrid__score-wrap">
           <span className="tetrogrid__score-label">Текущий: <span>{score.toLocaleString()}</span></span>
