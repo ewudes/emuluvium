@@ -537,6 +537,109 @@ body {
     background-position: 14px 12px, center;
     border: none;
   }
+
+  &__hint-wrap {
+    position: absolute;
+    bottom: 0;
+    font-family: 'bit-opirus', Futura, sans-serif;
+    z-index: -1;
+
+    &--left {
+      left: 0;
+      width: 390px;
+      padding-left: 30px;
+    }
+
+    &--right {
+      right: 0;
+      width: 320px;
+      padding-right: 30px;
+    }
+  }
+
+  &__hint-restart,
+  &__hint-pause,
+  &__hint-spin,
+  &__hint-fast,
+  &__hint-move {
+    display: flex;
+    height: 80px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    & > span {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      margin-left: auto;
+      color: #ffffff;
+    }
+  }
+
+  &__hint-restart {
+    margin-bottom: 15px;
+    background-image: url('./../../vendor/decorate/top-key.svg');
+
+    & > span {
+      width: calc(100% - 80px);
+      padding-left: 10px;
+    }
+  }
+
+  &__hint-pause {
+    margin-bottom: 30px;
+    background-image: url('./../../vendor/decorate/space-bar-key.svg');
+
+    & > span {
+      width: calc(100% - 285px);
+      padding-left: 10px;
+    }
+  }
+
+  &__hint-spin {
+    margin-bottom: 15px;
+    background-image: url('./../../vendor/decorate/top-key.svg');
+    background-position: right;
+
+    & > span {
+      justify-content: flex-end;
+      width: calc(100% - 80px);
+      padding-right: 10px;
+      margin-left: 0;
+      
+    }
+  }
+
+  &__hint-fast {
+    margin-bottom: 15px;
+    background-image: url('./../../vendor/decorate/bottom-key.svg');
+    background-position: right;
+
+    & > span {
+      justify-content: flex-end;
+      width: calc(100% - 80px);
+      padding-right: 10px;
+      margin-left: 0;
+      
+    }
+  }
+
+  &__hint-move {
+    margin-bottom: 30px;
+    background-image:
+                    url('./../../vendor/decorate/left-key.svg'),
+                    url('./../../vendor/decorate/right-key.svg');
+    background-position: 145px, right;
+
+    & > span {
+      justify-content: flex-end;
+      width: calc(100% - 175px);
+      padding-right: 10px;
+      margin-left: 0;
+      
+    }
+  }
 }
 
 @keyframes moveBackground {

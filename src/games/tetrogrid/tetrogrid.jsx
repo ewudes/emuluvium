@@ -382,6 +382,25 @@ const Tetrogrid = () => {
           <div className="tetrogrid__overlay"></div>  
         </> 
       )}
+      <div className="tetrogrid__hint-wrap tetrogrid__hint-wrap--left">
+        <div className="tetrogrid__hint-restart">
+          <span className="tetrogrid__hint-label">Давай по новой</span>
+        </div>
+        <div className="tetrogrid__hint-pause">
+          <span className="tetrogrid__hint-label">Обожди</span>
+        </div>
+      </div>
+      <div className="tetrogrid__hint-wrap tetrogrid__hint-wrap--right">
+        <div className="tetrogrid__hint-spin">
+          <span className="tetrogrid__hint-label">Вертеть</span>
+        </div>
+        <div className="tetrogrid__hint-fast">
+          <span className="tetrogrid__hint-label">Газануть</span>
+        </div>
+        <div className="tetrogrid__hint-move">
+          <span className="tetrogrid__hint-label">Туда/Сюда</span>
+        </div>
+      </div>
     </div>
   );
 };
