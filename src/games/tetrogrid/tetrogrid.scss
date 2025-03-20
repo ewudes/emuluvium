@@ -144,14 +144,16 @@ body {
 
   &__star {
     display: block;
-    width: 50px;
-    height: 47px;
+    width: 42px;
+    height: 60px;
     margin: 0 2px;
-    background-image: url('./../../vendor/decorate/star_outline.png');
+    background-image: url('./../../vendor/decorate/fire-out.png');
+    // background-color: green;
+    background-repeat: no-repeat;
     background-size: contain;
 
     &--active {
-      background-image: url('./../../vendor/decorate/star.png');
+      background-image: url('./../../vendor/decorate/fire-in.png');
     }
   }
 
@@ -264,14 +266,12 @@ body {
   &__nextshape {
     font-weight: bold;
     color: #3d3d3d;
-    font-size: 20px;
   }
 
   &__score-label {
     display: flex;
     font-family: 'bit-opirus', Futura, sans-serif;
-    font-size: 28px;
-    line-height: .9;
+    line-height: 1.6;
     text-align: left;
     padding-left: 10px;
     padding-right: 10px;
@@ -439,7 +439,6 @@ body {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    font-size: 24px;
 
     & > h2 {
       margin: 0;
@@ -462,6 +461,8 @@ body {
       margin-bottom: 10px;
     }
   }
+
+
 
   &__rang-wrap {
     position: absolute;
@@ -510,12 +511,6 @@ body {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, .5);
-  }
-
-  &__paused {
-    height: 50px;
-    z-index: 9;
-    
   }
 
   &__game-over-btns {
