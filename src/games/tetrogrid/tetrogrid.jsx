@@ -200,6 +200,30 @@ function useBoard() {
     event.preventDefault();
   }
 
+  useEffect(() => {
+    const hintElement = document.querySelector(".tetrogrid__hint-restart");
+  
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowUp" && hintElement) {
+        hintElement.classList.add("tetrogrid__hint-restart--active");
+      }
+    };
+  
+    const handleKeyUp = (event) => {
+      if (event.key === "ArrowUp" && hintElement) {
+        hintElement.classList.remove("tetrogrid__hint-restart--active");
+      }
+    };
+  
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+  
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, []);
+
   function togglePause() {
     setPaused((prev) => !prev);
   }
