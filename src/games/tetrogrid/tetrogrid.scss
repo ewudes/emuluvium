@@ -581,7 +581,7 @@ body {
   &__hint-fast,
   &__hint-move {
     display: flex;
-    height: 80px;
+    height: 70px;
     width: 100%;
     background-repeat: no-repeat;
     background-size: contain;
@@ -597,11 +597,19 @@ body {
 
   &__hint-restart {
     margin-bottom: 15px;
-    background-image: url('./../../vendor/decorate/top-key.svg');
+    background-image: url('./../../vendor/decorate/restart-key.svg');
 
     & > span {
-      width: calc(100% - 80px);
+      width: calc(100% - 70px);
       padding-left: 10px;
+    }
+
+    &--active {
+      background-image: url('./../../vendor/decorate/restart-key-active.svg');
+
+      & > span {
+        color: #f47070;
+      }
     }
   }
 
@@ -610,7 +618,7 @@ body {
     background-image: url('./../../vendor/decorate/space-bar-key.svg');
 
     & > span {
-      width: calc(100% - 285px);
+      width: calc(100% - 250px);
       padding-left: 10px;
     }
   }
@@ -622,7 +630,7 @@ body {
 
     & > span {
       justify-content: flex-end;
-      width: calc(100% - 80px);
+      width: calc(100% - 70px);
       padding-right: 10px;
       margin-left: 0;
       
@@ -636,7 +644,7 @@ body {
 
     & > span {
       justify-content: flex-end;
-      width: calc(100% - 80px);
+      width: calc(100% - 70px);
       padding-right: 10px;
       margin-left: 0;
       
@@ -648,11 +656,11 @@ body {
     background-image:
                     url('./../../vendor/decorate/left-key.svg'),
                     url('./../../vendor/decorate/right-key.svg');
-    background-position: 145px, right;
+    background-position: 165px, right;
 
     & > span {
       justify-content: flex-end;
-      width: calc(100% - 175px);
+      width: calc(100% - 155px);
       padding-right: 10px;
       margin-left: 0;
       
