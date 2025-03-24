@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState, useCallback } from "react";
 import { Link } from 'react-router-dom';
 import { SHAPES, DIFFICULTY_LEVEL, SPEED_LEVEL, DIFFICULTY_LEVELS } from './const';
 import "./tetrogrid.scss";
@@ -177,6 +177,11 @@ function useBoard() {
   function onKeyDown(event) {
     if (gameOver) return;
 
+    if (paused && event.key !== " ") {
+      event.preventDefault();
+      return;
+    }
+
     switch (event.key) {
       case "ArrowRight":
         movePosition(1, 0);
@@ -202,36 +207,46 @@ function useBoard() {
     event.preventDefault();
   }
 
+  const keyToClassMap = {
+    ArrowUp: ".tetrogrid__hint-spin",
+    ArrowLeft: ".tetrogrid__hint-move",
+    ArrowRight: ".tetrogrid__hint-move",
+    ArrowDown: ".tetrogrid__hint-fast",
+    Space: ".tetrogrid__hint-pause",
+    KeyR: ".tetrogrid__hint-restart"
+  };
+  
+  const isPausedRef = useRef(false);
+  
+  const handleKeyDown = useCallback((event) => {
+    if (isPausedRef.current && event.code !== "Space") return;
+    
+    const hintSelector = keyToClassMap[event.code];
+    if (hintSelector) {
+      const hintElement = document.querySelector(hintSelector);
+      if (hintElement) {
+        hintElement.classList.add("pressed");
+      }
+      
+      if (event.code === "Space") {
+        isPausedRef.current = !isPausedRef.current;
+      }
+    }
+  }, []);
+  
+  const handleKeyUp = useCallback((event) => {
+    if (isPausedRef.current && event.code !== "Space") return;
+    
+    const hintSelector = keyToClassMap[event.code];
+    if (hintSelector) {
+      const hintElement = document.querySelector(hintSelector);
+      if (hintElement) {
+        hintElement.classList.remove("pressed");
+      }
+    }
+  }, []);
+  
   useEffect(() => {
-    const keyToClassMap = {
-      ArrowUp: ".tetrogrid__hint-spin",
-      ArrowLeft: ".tetrogrid__hint-move",
-      ArrowRight: ".tetrogrid__hint-move",
-      ArrowDown: ".tetrogrid__hint-fast",
-      Space: ".tetrogrid__hint-pause",
-      KeyR: ".tetrogrid__hint-restart"
-    };
-  
-    const handleKeyDown = (event) => {
-      const hintSelector = keyToClassMap[event.code];
-      if (hintSelector) {
-        const hintElement = document.querySelector(hintSelector);
-        if (hintElement) {
-          hintElement.classList.add("pressed");
-        }
-      }
-    };
-  
-    const handleKeyUp = (event) => {
-      const hintSelector = keyToClassMap[event.code];
-      if (hintSelector) {
-        const hintElement = document.querySelector(hintSelector);
-        if (hintElement) {
-          hintElement.classList.remove("pressed");
-        }
-      }
-    };
-  
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
   
@@ -239,7 +254,8 @@ function useBoard() {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, []);
+  }, [handleKeyDown, handleKeyUp]);
+
 
   function togglePause() {
     setPaused((prev) => !prev);
