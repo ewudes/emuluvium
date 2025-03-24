@@ -131,18 +131,18 @@ body {
     }
   }
 
-  &__stars-wrap {
+  &__fires-wrap {
     display: flex;
     margin-bottom: 20px;
   }
 
-  &__stars {
+  &__fires {
     margin: 0 auto;
     padding: 0;
     display: flex;
   }
 
-  &__star {
+  &__fire {
     display: block;
     width: 42px;
     height: 60px;
@@ -478,7 +478,7 @@ body {
   &__rang-item {
     width: 90px;
     height: 90px;
-    background-image: url('./../../vendor/decorate/level_out.png');
+    background-image: url('./../../vendor/decorate/star_outline.png');
     background-repeat: no-repeat;
     background-size: contain;
     transform: translateY(-70px);
