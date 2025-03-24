@@ -193,6 +193,8 @@ function useBoard() {
       case " ":
         togglePause();
         break;
+      case "r":
+        restartGame();
       default:
         return;
     }
@@ -378,13 +380,13 @@ const Tetrogrid = () => {
         </div>
       </div>
       <div className="tetrogrid__wrapper">
-        <div className="tetrogrid__stars-wrap">
-          <ul className="tetrogrid__stars">
-            <li className="tetrogrid__star"></li>
-            <li className="tetrogrid__star"></li>
-            <li className="tetrogrid__star"></li>
-            <li className="tetrogrid__star"></li>
-            <li className="tetrogrid__star"></li>
+        <div className="tetrogrid__fires-wrap">
+          <ul className="tetrogrid__fires">
+            <li className="tetrogrid__fire"></li>
+            <li className="tetrogrid__fire"></li>
+            <li className="tetrogrid__fire"></li>
+            <li className="tetrogrid__fire"></li>
+            <li className="tetrogrid__fire"></li>
           </ul>
         </div>
         <div ref={eBoard} className="tetrogrid__board tetrogrid__bg-inside--empty" tabIndex={0} onKeyDown={onKeyDown}>
