@@ -201,17 +201,32 @@ function useBoard() {
   }
 
   useEffect(() => {
-    const hintElement = document.querySelector(".tetrogrid__hint-restart");
+    const keyToClassMap = {
+      ArrowUp: ".tetrogrid__hint-spin",
+      ArrowLeft: ".tetrogrid__hint-move",
+      ArrowRight: ".tetrogrid__hint-move",
+      ArrowDown: ".tetrogrid__hint-fast",
+      Space: ".tetrogrid__hint-pause",
+      KeyR: ".tetrogrid__hint-restart"
+    };
   
     const handleKeyDown = (event) => {
-      if (event.key === "ArrowUp" && hintElement) {
-        hintElement.classList.add("tetrogrid__hint-restart--active");
+      const hintSelector = keyToClassMap[event.code];
+      if (hintSelector) {
+        const hintElement = document.querySelector(hintSelector);
+        if (hintElement) {
+          hintElement.classList.add("pressed");
+        }
       }
     };
   
     const handleKeyUp = (event) => {
-      if (event.key === "ArrowUp" && hintElement) {
-        hintElement.classList.remove("tetrogrid__hint-restart--active");
+      const hintSelector = keyToClassMap[event.code];
+      if (hintSelector) {
+        const hintElement = document.querySelector(hintSelector);
+        if (hintElement) {
+          hintElement.classList.remove("pressed");
+        }
       }
     };
   

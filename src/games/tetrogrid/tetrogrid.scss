@@ -604,7 +604,7 @@ body {
       padding-left: 10px;
     }
 
-    &--active {
+    &.pressed {
       background-image: url('./../../vendor/decorate/restart-key-active.svg');
 
       & > span {
@@ -621,6 +621,14 @@ body {
       width: calc(100% - 250px);
       padding-left: 10px;
     }
+
+    &.pressed {
+      background-image: url('./../../vendor/decorate/space-bar-key-active.svg');
+
+      & > span {
+        color: #f47070;
+      }
+    }
   }
 
   &__hint-spin {
@@ -633,7 +641,14 @@ body {
       width: calc(100% - 70px);
       padding-right: 10px;
       margin-left: 0;
-      
+    }
+
+    &.pressed {
+      background-image: url('./../../vendor/decorate/top-key-active.svg');
+
+      & > span {
+        color: #f47070;
+      }
     }
   }
 
@@ -647,7 +662,14 @@ body {
       width: calc(100% - 70px);
       padding-right: 10px;
       margin-left: 0;
-      
+    }
+
+    &.pressed {
+      background-image: url('./../../vendor/decorate/bottom-key-active.svg');
+
+      & > span {
+        color: #f47070;
+      }
     }
   }
 
@@ -664,6 +686,16 @@ body {
       padding-right: 10px;
       margin-left: 0;
       
+    }
+
+    &.pressed {
+      background-image:
+                    url('./../../vendor/decorate/left-key-active.svg'),
+                    url('./../../vendor/decorate/right-key-active.svg');
+
+      & > span {
+        color: #f47070;
+      }
     }
   }
 }
