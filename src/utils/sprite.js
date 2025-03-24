@@ -19,9 +19,6 @@ const spriter = new SVGSpriter({
   },
 });
 
-{/* <svg><use xlink:href="output/sprite.svg#icon-name"></use></svg> */}
-
-
 fs.readdir(inputDir, (err, files) => {
   if (err) {
     console.error("Ошибка чтения папки:", err);
