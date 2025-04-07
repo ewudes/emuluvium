@@ -10,7 +10,7 @@ const Home = () => {
         <a href="#" className="home__badge-icon"></a>
         <span className="home__badge-text">code on github</span>
       </div>
-      <h1 className="home__title">Bit Nostalgia</h1>
+      <h1 className="home__title">Emuluvium</h1>
       <ul className="home__list">
         <li className="home__item">
           <Link to="/tetrogrid" className="home__link">TetroGrid</Link>

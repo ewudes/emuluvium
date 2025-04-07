@@ -1,5 +1,5 @@
-# 🎮 Bit Nostalgia [![image](https://img.shields.io/badge/click_to_demo-blue)](https://bit-nostalgia.netlify.app/)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1c2bfc8f-b78b-4b37-8cfd-5807c1eaeadc/deploy-status)](https://app.netlify.com/sites/bit-nostalgia/deploys)
+# 🎮 Emuluvium [![image](https://img.shields.io/badge/click_to_demo-blue)](https://emuluvium.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1c2bfc8f-b78b-4b37-8cfd-5807c1eaeadc/deploy-status)](https://app.netlify.com/sites/emuluvium/deploys)
 
 Description coming soon
 
