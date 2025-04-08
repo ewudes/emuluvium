@@ -6,6 +6,7 @@ import '../../vendor/fonts/fonts.scss';
 
 import Home from "../../pages/home/home";
 import Tetrogrid from "../../games/tetrogrid/tetrogrid";
+import Snatrix from "../../games/snatrix/snatrix";
 
 const App = () => {
   return (
@@ -13,6 +14,9 @@ const App = () => {
       <Switch>
         <Route exact path="/tetrogrid">
           <Tetrogrid />
+        </Route>
+        <Route exact path="/snatrix">
+          <Snatrix />
         </Route>
         <Route exact path="/">
           <Home />

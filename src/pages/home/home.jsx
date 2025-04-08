@@ -15,6 +15,9 @@ const Home = () => {
         <li className="home__item">
           <Link to="/tetrogrid" className="home__link">TetroGrid</Link>
         </li>
+        <li className="home__item">
+          <Link to="/snatrix" className="home__link">Snatrix</Link>
+        </li>
       </ul>
     </main>
   );
