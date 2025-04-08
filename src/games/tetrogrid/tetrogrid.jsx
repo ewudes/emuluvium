@@ -1,6 +1,8 @@
 import React, { memo, useEffect, useRef, useState, useCallback } from "react";
 import { Link } from 'react-router-dom';
 import { SHAPES, DIFFICULTY_LEVEL, SPEED_LEVEL, DIFFICULTY_LEVELS } from './const';
+import GameOver from '../../components/game-over/game-over';
+import Pause from "../../components/pause/pause";
 import "./tetrogrid.scss";
 
 const ROW_COUNT = 20;
@@ -419,33 +421,8 @@ const Tetrogrid = () => {
           <NextShapeDisplay shape={nextShape} />
         </div>
       </div>
-      {gameOver && (
-        <>
-          <div className="tetrogrid__game-over">
-            <ul className="tetrogrid__rang-wrap">
-              <li className="tetrogrid__rang-item"></li>
-              <li className="tetrogrid__rang-item"></li>
-              <li className="tetrogrid__rang-item"></li>
-            </ul>
-            <h2>Потрачено!</h2>
-            <p>Счет: {score}</p>
-            <p>Время: {formatGameTime(gameTime)}</p>
-            <div className="tetrogrid__game-over-btns">
-              <button className="tetrogrid__restart-button" onClick={handleRestart}>Играть заново</button>
-              <Link to="/" className="tetrogrid__home-button">Home</Link>
-            </div>
-          </div>
-          <div className="tetrogrid__overlay"></div>
-        </>
-      )}
-      {paused && (
-        <>
-          <div className="tetrogrid__paused">
-            <h2>Пауза</h2>
-          </div>
-          <div className="tetrogrid__overlay"></div>  
-        </> 
-      )}
+      {gameOver && <GameOver score={score} gameTime={formatGameTime(gameTime)} handleClick={handleRestart} />}
+      {paused && <Pause />}
       <div className="tetrogrid__hint-wrap tetrogrid__hint-wrap--left">
         <div className="tetrogrid__hint-restart">
           <span className="tetrogrid__hint-label">Давай по новой</span>
