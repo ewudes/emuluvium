@@ -3,22 +3,42 @@
   top: 0;
   right: 0;
   margin: 30px;
-  width: 70px;
+  width: 300px;
   height: 70px;
-  border-radius: 50%;
   background-image:
                   url('./../../vendor/decorate/profile-icon.png'),
                   url('./../../vendor/decorate/border-profile.png');
   background-repeat: no-repeat;
-  background-size: 60%, contain;
-  background-position: center 13px, center;
-  background-color: #3d3d3d;
+  background-size: 40px, 70px;
+  background-position: 245px, right;
+  font-family: 'bit-opirus', Futura, sans-serif;
   cursor: pointer;
-  transition: 1s;
+  overflow: hidden;
 
   &:hover { 
     background-image:
                     url('./../../vendor/decorate/profile-icon.png'),
                     url('./../../vendor/decorate/border-profile-hover.png');
+  }
+
+  &:hover .profile__name {
+    right: 30px;
+  }
+
+  &__name {
+    position: relative;
+    right: -180px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing:border-box;
+    padding-right: 50px;
+    font-size: 16px;
+    overflow: hidden;
+    min-width: 300px;
+    height: 70px;
+    color: #3d3d3d;
+    transition: 1s;
+    z-index: -1;
   }
 }
