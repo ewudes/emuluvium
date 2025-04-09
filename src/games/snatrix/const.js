@@ -6,3 +6,12 @@ export const INITIAL_SNAKE = [
 ];
 
 export const INITIAL_DIRECTION = { x: 1, y: 0 };
+
+export const HINT_SCHEME = {
+  UP: "Вверх",
+  LEFT: "Влево",
+  RIGHT: "Вправо",
+  DOWN: "Вниз",
+  SPACE: "Пауза",
+  R: "Заново"
+};

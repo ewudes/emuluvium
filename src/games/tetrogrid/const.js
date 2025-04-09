@@ -109,3 +109,16 @@ export const DIFFICULTY_LEVELS = [
     SPEED: SPEED_LEVEL.LEGEND
   },
 ];
+
+export const HINT_SCHEME = {
+  UP: "Повернуть",
+  LEFT: "Влево",
+  RIGHT: "Вправо",
+  DOWN: "Ускорить",
+  SPACE: "Пауза",
+  R: "Заново"
+};
+
+export const ROW_COUNT = 20;
+
+export const COLUMN_COUNT = 10;
