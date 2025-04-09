@@ -1,12 +1,11 @@
-import React, { memo, useEffect, useRef, useState, useCallback } from "react";
-import { Link } from 'react-router-dom';
-import { SHAPES, DIFFICULTY_LEVEL, SPEED_LEVEL, DIFFICULTY_LEVELS } from './const';
-import GameOver from '../../components/game-over/game-over';
+import React, { memo, useEffect, useRef, useState } from "react";
+import { SHAPES, DIFFICULTY_LEVEL, SPEED_LEVEL, DIFFICULTY_LEVELS, ROW_COUNT, COLUMN_COUNT, HINT_SCHEME } from "./const";
+import GameOver from "../../components/game-over/game-over";
 import Pause from "../../components/pause/pause";
+import Nav from "../../components/nav/nav";
+import Profile from "../../components/profile/profile";
+import Hint from "../../components/hint/hint";
 import "./tetrogrid.scss";
-
-const ROW_COUNT = 20;
-const COLUMN_COUNT = 10;
 
 function randomShape() {
   const shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
@@ -42,10 +41,10 @@ function useBoard() {
   const [position, setPosition] = useState({ x: 4, y: 0 });
   const [display, setDisplay] = useState(() => mergeIntoStage(scene, shape, position));
   const [score, setScore] = useState(0);
-  const [gameOver, setGameOver] = useState(false);
+  const [isGameOver, setGameOver] = useState(false);
   const [fallSpeed, setFallSpeed] = useState(SPEED_LEVEL.DEFAULT);
   const [level, setLevel] = useState(DIFFICULTY_LEVEL.DEFAULT);
-  const [paused, setPaused] = useState(false);
+  const [isPaused, setPaused] = useState(false);
   const [highScore, setHighScore] = useState(() => {
     const savedHighScore = localStorage.getItem("highScore");
     return savedHighScore ? parseInt(savedHighScore, 10) : 0;
@@ -54,13 +53,13 @@ function useBoard() {
   const timerRef = useRef(null);
 
   useEffect(() => {
-    if (!gameOver && !paused) {
+    if (!isGameOver && !isPaused) {
       timerRef.current = setInterval(() => {
         setGameTime((prevTime) => prevTime + 1);
       }, 1000);
     }
     return () => clearInterval(timerRef.current);
-  }, [gameOver, paused]); 
+  }, [isGameOver, isPaused]); 
 
   useEffect(updateDisplay, [scene, shape, position]);
   useEffect(removeFullLines, [scene]);
@@ -72,7 +71,7 @@ function useBoard() {
   }
 
   function tick() {
-    if (gameOver || paused) return;
+    if (isGameOver || isPaused) return;
 
     if (!movePosition(0, 1)) {
       placeShape();
@@ -80,7 +79,7 @@ function useBoard() {
   }
 
   function placeShape() {
-    if (gameOver) return;
+    if (isGameOver) return;
 
     setScene((prevScene) => mergeIntoStage(prevScene, shape, position));
 
@@ -177,9 +176,9 @@ function useBoard() {
   }
 
   function onKeyDown(event) {
-    if (gameOver) return;
+    if (isGameOver) return;
 
-    if (paused && event.key !== " ") {
+    if (isPaused && event.key !== " ") {
       event.preventDefault();
       return;
     }
@@ -208,56 +207,6 @@ function useBoard() {
 
     event.preventDefault();
   }
-
-  const keyToClassMap = {
-    ArrowUp: ".tetrogrid__hint-spin",
-    ArrowLeft: ".tetrogrid__hint-move",
-    ArrowRight: ".tetrogrid__hint-move",
-    ArrowDown: ".tetrogrid__hint-fast",
-    Space: ".tetrogrid__hint-pause",
-    KeyR: ".tetrogrid__hint-restart"
-  };
-  
-  const isPausedRef = useRef(false);
-  
-  const handleKeyDown = useCallback((event) => {
-    if (isPausedRef.current && event.code !== "Space") return;
-    
-    const hintSelector = keyToClassMap[event.code];
-    if (hintSelector) {
-      const hintElement = document.querySelector(hintSelector);
-      if (hintElement) {
-        hintElement.classList.add("pressed");
-      }
-      
-      if (event.code === "Space") {
-        isPausedRef.current = !isPausedRef.current;
-      }
-    }
-  }, []);
-  
-  const handleKeyUp = useCallback((event) => {
-    if (isPausedRef.current && event.code !== "Space") return;
-    
-    const hintSelector = keyToClassMap[event.code];
-    if (hintSelector) {
-      const hintElement = document.querySelector(hintSelector);
-      if (hintElement) {
-        hintElement.classList.remove("pressed");
-      }
-    }
-  }, []);
-  
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
-  
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
-    };
-  }, [handleKeyDown, handleKeyUp]);
-
 
   function togglePause() {
     setPaused((prev) => !prev);
@@ -298,7 +247,7 @@ function useBoard() {
     }, [delay]);
   }
 
-  return [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed, highScore, gameTime];
+  return [display, score, isGameOver, nextShape, level, onKeyDown, isPaused, restartGame, fallSpeed, highScore, gameTime];
 }
 
 function formatGameTime(seconds) {
@@ -311,7 +260,7 @@ function formatGameTime(seconds) {
 }
 
 const Tetrogrid = () => {
-  const [display, score, gameOver, nextShape, level, onKeyDown, paused, restartGame, fallSpeed, highScore, gameTime] = useBoard();
+  const [display, score, isGameOver, nextShape, level, onKeyDown, isPaused, restartGame, fallSpeed, highScore, gameTime] = useBoard();
   const eBoard = useRef();
 
   useEffect(() => {
@@ -352,7 +301,6 @@ const Tetrogrid = () => {
     };
   }, []);
   
-
   const handleRestart = () => {
     restartGame();
     if (eBoard.current) eBoard.current.focus();
@@ -373,17 +321,12 @@ const Tetrogrid = () => {
 
   return (
     <div className="tetrogrid">
-      <div className={`tetrogrid__bg-wrap tetrogrid__bg-wrap--default ${gameOver || paused ? 'tetrogrid__bg-stop' : ''}`}>
+      <div className={`tetrogrid__bg-wrap tetrogrid__bg-wrap--default ${isGameOver || isPaused ? 'tetrogrid__bg-stop' : ''}`}>
         <div className="tetrogrid__bg tetrogrid__bg--grass"></div>
         <div className="tetrogrid__bg tetrogrid__bg--grass"></div>
       </div>
-      <div className="hamburger not-active">
-        <span className="hamburger__item"></span>
-        <span className="hamburger__item"></span>
-        <span className="hamburger__item"></span>
-      </div>
-      <div className="tetrogrid__nav"></div>
-      <div className="tetrogrid__profile"></div>
+      <Nav/>
+      <Profile />
       <div className="tetrogrid__aside tetrogrid__aside--left">
         <div className="tetrogrid__score-wrap">
           <span className="tetrogrid__score-label">Текущий: <span>{score.toLocaleString()}</span></span>
@@ -421,27 +364,9 @@ const Tetrogrid = () => {
           <NextShapeDisplay shape={nextShape} />
         </div>
       </div>
-      {gameOver && <GameOver score={score} gameTime={formatGameTime(gameTime)} handleClick={handleRestart} />}
-      {paused && <Pause />}
-      <div className="tetrogrid__hint-wrap tetrogrid__hint-wrap--left">
-        <div className="tetrogrid__hint-restart">
-          <span className="tetrogrid__hint-label">Давай по новой</span>
-        </div>
-        <div className="tetrogrid__hint-pause">
-          <span className="tetrogrid__hint-label">Обожди</span>
-        </div>
-      </div>
-      <div className="tetrogrid__hint-wrap tetrogrid__hint-wrap--right">
-        <div className="tetrogrid__hint-spin">
-          <span className="tetrogrid__hint-label">Вертеть</span>
-        </div>
-        <div className="tetrogrid__hint-fast">
-          <span className="tetrogrid__hint-label">Газануть</span>
-        </div>
-        <div className="tetrogrid__hint-move">
-          <span className="tetrogrid__hint-label">Туда/Сюда</span>
-        </div>
-      </div>
+      {isGameOver && <GameOver score={score} gameTime={formatGameTime(gameTime)} handleClick={handleRestart} />}
+      {isPaused && <Pause />}
+      <Hint scheme={HINT_SCHEME}/>
     </div>
   );
 };

@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BOARD_SIZE, INITIAL_SNAKE, INITIAL_DIRECTION } from "./const";
+import { BOARD_SIZE, INITIAL_SNAKE, INITIAL_DIRECTION, HINT_SCHEME } from "./const";
 import GameOver from "../../components/game-over/game-over";
+import Nav from "../../components/nav/nav";
+import Profile from "../../components/profile/profile";
+import Hint from "../../components/hint/hint";
 import "./snatrix.scss";
 
 const getRandomCoord = () => ({
@@ -85,6 +88,8 @@ const Snatrix = () => {
 
   return (
     <div className="snatrix">
+      <Nav/>
+      <Profile />
       <div
         className="snatrix__board"
         style={{
@@ -109,6 +114,7 @@ const Snatrix = () => {
         })}
       </div>
       {isGameOver && <GameOver score={11} gameTime={100} handleClick={restartGame}/>}
+      <Hint scheme={HINT_SCHEME}/>
     </div>
   );
 };

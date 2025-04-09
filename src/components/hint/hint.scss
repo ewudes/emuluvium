@@ -1,0 +1,141 @@
+.hint {
+  position: absolute;
+  bottom: 0;
+  font-family: 'bit-opirus', Futura, sans-serif;
+
+  &--left {
+    left: 0;
+    width: 390px;
+    padding-left: 30px;
+  }
+
+  &--right {
+    right: 0;
+    width: 335px;
+    padding-right: 30px;
+  }
+
+  &__restart,
+  &__pause,
+  &__spin,
+  &__fast,
+  &__move {
+    display: flex;
+    height: 70px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    & > span {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      margin-left: auto;
+      color: #ffffff;
+    }
+  }
+
+  &__restart {
+    margin-bottom: 15px;
+    background-image: url('./../../vendor/decorate/restart-key.svg');
+  
+    & > span {
+      width: calc(100% - 70px);
+      padding-left: 10px;
+    }
+  
+    &.pressed {
+      background-image: url('./../../vendor/decorate/restart-key-active.svg');
+  
+      & > span {
+        color: #f47070;
+      }
+    }
+  }
+
+  &__pause {
+    margin-bottom: 30px;
+    background-image: url('./../../vendor/decorate/space-bar-key.svg');
+  
+    & > span {
+      width: calc(100% - 250px);
+      padding-left: 10px;
+    }
+  
+    &.pressed {
+      background-image: url('./../../vendor/decorate/space-bar-key-active.svg');
+  
+      & > span {
+        color: #f47070;
+      }
+    }
+  }
+
+  &__spin {
+    margin-bottom: 15px;
+    background-image: url('./../../vendor/decorate/top-key.svg');
+    background-position: right;
+  
+    & > span {
+      justify-content: flex-end;
+      width: calc(100% - 70px);
+      padding-right: 10px;
+      margin-left: 0;
+    }
+  
+    &.pressed {
+      background-image: url('./../../vendor/decorate/top-key-active.svg');
+  
+      & > span {
+        color: #f47070;
+      }
+    }
+  }
+
+  &__fast {
+    margin-bottom: 15px;
+    background-image: url('./../../vendor/decorate/bottom-key.svg');
+    background-position: right;
+  
+    & > span {
+      justify-content: flex-end;
+      width: calc(100% - 70px);
+      padding-right: 10px;
+      margin-left: 0;
+    }
+  
+    &.pressed {
+      background-image: url('./../../vendor/decorate/bottom-key-active.svg');
+  
+      & > span {
+        color: #f47070;
+      }
+    }
+  }
+
+  &__move {
+    margin-bottom: 30px;
+    background-image:
+                    url('./../../vendor/decorate/left-key.svg'),
+                    url('./../../vendor/decorate/right-key.svg');
+    background-position: 180px, right;
+  
+    & > span {
+      justify-content: flex-end;
+      width: calc(100% - 155px);
+      padding-right: 10px;
+      margin-left: 0;
+      
+    }
+  
+    &.pressed {
+      background-image:
+                    url('./../../vendor/decorate/left-key-active.svg'),
+                    url('./../../vendor/decorate/right-key-active.svg');
+  
+      & > span {
+        color: #f47070;
+      }
+    }
+  }
+}
