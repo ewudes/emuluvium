@@ -14,7 +14,11 @@
   font-family: 'bit-opirus', Futura, sans-serif;
   line-height: 2.5;
   height: 50px;
-  z-index: 9;
+  z-index: 101;
+
+  & > h2 {
+    margin: 0;
+  }
 
   &__overlay {
     position: absolute;
@@ -23,6 +27,6 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, .5);
-    z-index: 1;
+    z-index: 100;
   }
 }
