@@ -322,8 +322,8 @@ const Tetrogrid = () => {
   return (
     <div className="tetrogrid">
       <div className={`tetrogrid__bg-wrap tetrogrid__bg-wrap--default ${isGameOver || isPaused ? 'tetrogrid__bg-stop' : ''}`}>
-        <div className="tetrogrid__bg tetrogrid__bg--grass"></div>
-        <div className="tetrogrid__bg tetrogrid__bg--grass"></div>
+        <div className="tetrogrid__bg"></div>
+        <div className="tetrogrid__bg"></div>
       </div>
       <Nav/>
       <Profile />
