@@ -16,6 +16,7 @@ const Snatrix = () => {
   const [food, setFood] = useState(getRandomCoord());
   const [direction, setDirection] = useState(INITIAL_DIRECTION);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [isPaused, setPaused] = useState(false);
   const [speed, setSpeed] = useState(200);
   const directionRef = useRef(direction);
   directionRef.current = direction;
@@ -88,6 +89,10 @@ const Snatrix = () => {
 
   return (
     <div className="snatrix">
+      <div className={`snatrix__bg-wrap snatrix__bg-wrap--default ${isGameOver || isPaused ? 'tetrogrid__bg-stop' : ''}`}>
+        <div className="snatrix__bg"></div>
+        <div className="snatrix__bg"></div>
+      </div>
       <Nav/>
       <Profile />
       <div
