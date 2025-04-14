@@ -51,54 +51,39 @@ body {
     background-size: 50%;
     background-position: center;
     background-repeat: repeat-x;
+    background-image:          
+    url('./../../vendor/backgroud/backgroundColorGrass.png'),
+    linear-gradient(
+      180deg,
+      #cfeffc 0%, 
+      #cfeffc 49%, 
+      #22be75 51%, 
+      #22be75 100%
+    );
 
-    &--grass {
-      background-image:          
-                      url('./../../vendor/backgroud/backgroundColorGrass.png'),
-                      linear-gradient(
-                        180deg,
-                        #cfeffc 0%, 
-                        #cfeffc 49%, 
-                        #22be75 51%, 
-                        #22be75 100%
-                      );
-    }
+    // &--desert {
+    //   background-image:          
+    //                   url('./../../vendor/backgroud/backgroundColorDesert.png'),
+    //                   linear-gradient(
+    //                     180deg,
+    //                     #cfeffc 0%, 
+    //                     #cfeffc 49%, 
+    //                     #f0e3c1 51%, 
+    //                     #f0e3c1 100%
+    //                   );
+    // }
 
-    &--desert {
-      background-image:          
-                      url('./../../vendor/backgroud/backgroundColorDesert.png'),
-                      linear-gradient(
-                        180deg,
-                        #cfeffc 0%, 
-                        #cfeffc 49%, 
-                        #f0e3c1 51%, 
-                        #f0e3c1 100%
-                      );
-    }
-
-    &--fall {
-      background-image:          
-                      url('./../../vendor/backgroud/backgroundColorFall.png'),
-                      linear-gradient(
-                        180deg,
-                        #cfeffc 0%,
-                        #cfeffc 49%,
-                        #d16a4c 51%,
-                        #d16a4c 100%
-                      );
-    }
-
-    &--forest {
-      background-image:          
-                      url('./../../vendor/backgroud/backgroundColorForest.png'),
-                      linear-gradient(
-                        180deg,
-                        #cfeffc 0%,
-                        #cfeffc 49%,
-                        #d16a4c 51%,
-                        #d16a4c 100%
-                      );
-    }
+    // &--fall {
+    //   background-image:          
+    //                   url('./../../vendor/backgroud/backgroundColorFall.png'),
+    //                   linear-gradient(
+    //                     180deg,
+    //                     #cfeffc 0%,
+    //                     #cfeffc 49%,
+    //                     #d16a4c 51%,
+    //                     #d16a4c 100%
+    //                   );
+    // }
   }
 
   &__wrapper {
@@ -123,7 +108,6 @@ body {
     height: 60px;
     margin: 0 2px;
     background-image: url('./../../vendor/decorate/fire-out.png');
-    // background-color: green;
     background-repeat: no-repeat;
     background-size: contain;
 
