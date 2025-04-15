@@ -350,7 +350,7 @@ const Tetrogrid = () => {
             <li className="tetrogrid__fire"></li>
           </ul>
         </div>
-        <div ref={eBoard} className="tetrogrid__board tetrogrid__bg-inside--empty" tabIndex={0} onKeyDown={onKeyDown}>
+        <div ref={eBoard} className="tetrogrid__board tetrogrid__bg-inside" tabIndex={0} onKeyDown={onKeyDown}>
           {display.map((row, index) => (
             <Row key={index} row={row} />
           ))}
@@ -360,7 +360,7 @@ const Tetrogrid = () => {
         <div className="tetrogrid__level-wrap">
           <span className="tetrogrid__level-label">{level}</span>
         </div>
-        <div className="tetrogrid__nextshape-wrap tetrogrid__bg-inside--empty">
+        <div className="tetrogrid__nextshape-wrap tetrogrid__bg-inside">
           <NextShapeDisplay shape={nextShape} />
         </div>
       </div>
