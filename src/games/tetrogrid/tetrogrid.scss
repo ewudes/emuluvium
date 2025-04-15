@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: black;
+  background-color: #000000;
 }
 
 .tetrogrid {
@@ -52,14 +52,14 @@ body {
     background-position: center;
     background-repeat: repeat-x;
     background-image:          
-    url('./../../vendor/backgroud/backgroundColorGrass.png'),
-    linear-gradient(
-      180deg,
-      #cfeffc 0%, 
-      #cfeffc 49%, 
-      #22be75 51%, 
-      #22be75 100%
-    );
+                    url('./../../vendor/backgroud/backgroundColorGrass.png'),
+                    linear-gradient(
+                      180deg,
+                      #cfeffc 0%, 
+                      #cfeffc 49%, 
+                      #22be75 51%, 
+                      #22be75 100%
+                    );
 
     // &--desert {
     //   background-image:          
@@ -171,53 +171,50 @@ body {
   }
 
   &__bg-inside {
-    &--forest {
-      background-image:
-                      url('./../../vendor/backgroud/backgroundForest.png'),
-                      linear-gradient(
-                        180deg,
-                        #cfeffc 0%,
-                        #cfeffc 49%,
-                        #b7e8fa 51%,
-                        #b7e8fa 100%
-                      );
-    }
+    background-image:
+                    url('./../../vendor/backgroud/backgroundEmpty.png'),
+                    linear-gradient(
+                      180deg,
+                      #cfeffc 0%,
+                      #cfeffc 49%,
+                      #b7e8fa 51%,
+                      #b7e8fa 100%
+                    );
+    // &--forest {
+    //   background-image:
+    //                   url('./../../vendor/backgroud/backgroundForest.png'),
+    //                   linear-gradient(
+    //                     180deg,
+    //                     #cfeffc 0%,
+    //                     #cfeffc 49%,
+    //                     #b7e8fa 51%,
+    //                     #b7e8fa 100%
+    //                   );
+    // }
 
-    &--castles {
-      background-image:
-                      url('./../../vendor/backgroud/backgroundCastles.png'),
-                      linear-gradient(
-                        180deg,
-                        #cfeffc 0%,
-                        #cfeffc 49%,
-                        #b7e8fa 51%,
-                        #b7e8fa 100%
-                      );
-    }
+    // &--castles {
+    //   background-image:
+    //                   url('./../../vendor/backgroud/backgroundCastles.png'),
+    //                   linear-gradient(
+    //                     180deg,
+    //                     #cfeffc 0%,
+    //                     #cfeffc 49%,
+    //                     #b7e8fa 51%,
+    //                     #b7e8fa 100%
+    //                   );
+    // }
 
-    &--desert {
-      background-image:
-                      url('./../../vendor/backgroud/backgroundDesert.png'),
-                      linear-gradient(
-                        180deg,
-                        #cfeffc 0%,
-                        #cfeffc 49%,
-                        #b7e8fa 51%,
-                        #b7e8fa 100%
-                      );
-    }
-
-    &--empty {
-      background-image:
-                      url('./../../vendor/backgroud/backgroundEmpty.png'),
-                      linear-gradient(
-                        180deg,
-                        #cfeffc 0%,
-                        #cfeffc 49%,
-                        #b7e8fa 51%,
-                        #b7e8fa 100%
-                      );
-    }
+    // &--desert {
+    //   background-image:
+    //                   url('./../../vendor/backgroud/backgroundDesert.png'),
+    //                   linear-gradient(
+    //                     180deg,
+    //                     #cfeffc 0%,
+    //                     #cfeffc 49%,
+    //                     #b7e8fa 51%,
+    //                     #b7e8fa 100%
+    //                   );
+    // }
   }
 
   &__score-label,
