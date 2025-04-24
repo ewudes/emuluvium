@@ -366,7 +366,7 @@ const Tetrogrid = () => {
       </div>
       {isGameOver && <GameOver score={score} gameTime={formatGameTime(gameTime)} handleClick={handleRestart} />}
       {isPaused && <Pause />}
-      <Hint scheme={HINT_SCHEME}/>
+      <Hint scheme={HINT_SCHEME} mode={HINT_SCHEME.MODE}/>
     </div>
   );
 };

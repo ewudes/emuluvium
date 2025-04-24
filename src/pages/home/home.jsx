@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HINT_SCHEME } from "./const";
+import Nav from "../../components/nav/nav";
+import Hint from "../../components/hint/hint";
 
 import "./home.scss";
 
 const Home = () => {
+  console.log('kek', HINT_SCHEME.LEFT)
   return (
     <main className="home__wrapper">
+      <Nav />
       <div className="home__badge">
         <a href="https://github.com/ewudes/emuluvium" target="_blank" className="home__badge-icon"></a>
         <span className="home__badge-text">code on github</span>
@@ -21,6 +26,7 @@ const Home = () => {
           </li>
         </ul>
       </div>
+      <Hint scheme={HINT_SCHEME} mode={HINT_SCHEME.MODE}/>
     </main>
   );
 }
