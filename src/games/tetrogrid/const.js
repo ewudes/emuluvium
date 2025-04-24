@@ -116,7 +116,7 @@ export const HINT_SCHEME = {
   RIGHT: "Вправо",
   DOWN: "Ускорить",
   SPACE: "Пауза",
-  R: "Заново"
+  R: "Заново",
 };
 
 export const ROW_COUNT = 20;
