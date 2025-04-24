@@ -112,7 +112,7 @@ body {
     &::after,
     &::before {
       position: absolute;
-      top: 45px;
+      top: 15px;
       content: '';
       display: block;
       width: 30px;
@@ -144,7 +144,7 @@ body {
     &::after,
     &::before {
       position: absolute;
-      bottom: 45px;
+      bottom: 15px;
       content: '';
       display: block;
       width: 30px;
