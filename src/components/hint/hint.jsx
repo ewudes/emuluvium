@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import "./hint.scss";
 
-const Hint = ({scheme}) => {
+const Hint = ({scheme, mode}) => {
   const keyToClassMap = {
       ArrowUp: ".hint__spin",
       ArrowLeft: ".hint__move",
@@ -53,24 +53,29 @@ const Hint = ({scheme}) => {
   
   return (
     <>
-      <div className="hint hint--left">
-        <div className="hint__restart">
-          <span className="tetrogrid__hint-label">{scheme.R}</span>
-        </div>
-        <div className="hint__pause">
+      <div className={`${mode === 'black' && 'hint--black'} hint hint--left`}>
+        { scheme.R &&
+          <div className={`${mode === 'black' && 'hint__restart--black'} hint__restart`}>
+            <span className="tetrogrid__hint-label">{scheme.R}</span>
+          </div>
+        }
+        <div className={`${mode === 'black' && 'hint__pause--black'} hint__pause`}>
           <span className="tetrogrid__hint-label">{scheme.SPACE}</span>
         </div>
       </div>
-      <div className="hint hint--right">
-        <div className="hint__spin">
+      <div className={`${mode === 'black' && 'hint--black'} hint hint--right`}>
+        <div className={`${mode === 'black' && 'hint__spin--black'} hint__spin`}>
           <span className="tetrogrid__hint-label">{scheme.UP}</span>
         </div>
-        <div className="hint__fast">
+        <div className={`${mode === 'black' && 'hint__fast--black'} hint__fast`}>
           <span className="tetrogrid__hint-label">{scheme.DOWN}</span>
         </div>
-        <div className="hint__move">
-          <span className="tetrogrid__hint-label">{scheme.LEFT}/{scheme.RIGHT}</span>
-        </div>
+        { (scheme.LEFT || scheme.RIGHT) &&
+          <div className={`${mode === 'black' && 'hint__move--black'} hint__move`}>
+            <span className="tetrogrid__hint-label">{scheme.LEFT}/{scheme.RIGHT}</span>
+          </div>
+        }
+
       </div> 
     </> 
   );

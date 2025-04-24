@@ -2,6 +2,11 @@
   position: absolute;
   bottom: 0;
   font-family: 'bit-opirus', Futura, sans-serif;
+  color: #ffffff;
+
+  &--black {
+    color: #3d3d3d
+  }
 
   &--left {
     left: 0;
@@ -31,13 +36,16 @@
       align-items: center;
       box-sizing: border-box;
       margin-left: auto;
-      color: #ffffff;
     }
   }
 
   &__restart {
     margin-bottom: 15px;
-    background-image: url('./../../vendor/decorate/restart-key.svg');
+    background-image: url('./../../vendor/decorate/restart-key-white.svg');
+
+    &--black {
+      background-image: url('./../../vendor/decorate/restart-key-black.svg');
+    }
   
     & > span {
       width: calc(100% - 70px);
@@ -55,7 +63,11 @@
 
   &__pause {
     margin-bottom: 30px;
-    background-image: url('./../../vendor/decorate/space-bar-key.svg');
+    background-image: url('./../../vendor/decorate/space-bar-key-white.svg');
+
+    &--black {
+      background-image: url('./../../vendor/decorate/space-bar-key-black.svg');
+    }
   
     & > span {
       width: calc(100% - 250px);
@@ -73,8 +85,12 @@
 
   &__spin {
     margin-bottom: 15px;
-    background-image: url('./../../vendor/decorate/top-key.svg');
+    background-image: url('./../../vendor/decorate/top-key-white.svg');
     background-position: right;
+
+    &--black {
+      background-image: url('./../../vendor/decorate/top-key-black.svg');
+    }
   
     & > span {
       justify-content: flex-end;
@@ -94,8 +110,12 @@
 
   &__fast {
     margin-bottom: 15px;
-    background-image: url('./../../vendor/decorate/bottom-key.svg');
+    background-image: url('./../../vendor/decorate/bottom-key-white.svg');
     background-position: right;
+
+    &--black {
+      background-image: url('./../../vendor/decorate/bottom-key-black.svg');
+    }
   
     & > span {
       justify-content: flex-end;
@@ -116,9 +136,15 @@
   &__move {
     margin-bottom: 30px;
     background-image:
-                    url('./../../vendor/decorate/left-key.svg'),
-                    url('./../../vendor/decorate/right-key.svg');
+                    url('./../../vendor/decorate/left-key-white.svg'),
+                    url('./../../vendor/decorate/right-key-white.svg');
     background-position: 180px, right;
+
+    &--black {
+      background-image:
+                      url('./../../vendor/decorate/left-key-black.svg'),
+                      url('./../../vendor/decorate/right-key-black.svg');
+    }
   
     & > span {
       justify-content: flex-end;
