@@ -7,18 +7,20 @@ const Home = () => {
   return (
     <main className="home__wrapper">
       <div className="home__badge">
-        <a href="#" className="home__badge-icon"></a>
+        <a href="https://github.com/ewudes/emuluvium" target="_blank" className="home__badge-icon"></a>
         <span className="home__badge-text">code on github</span>
       </div>
-      <h1 className="home__title">Emuluvium</h1>
-      <ul className="home__list">
-        <li className="home__item">
-          <Link to="/tetrogrid" className="home__link">TetroGrid</Link>
-        </li>
-        <li className="home__item">
-          <Link to="/snatrix" className="home__link">Snatrix</Link>
-        </li>
-      </ul>
+      <div className="home__overlay">
+        <h1 className="home__title">Emuluvium</h1>
+        <ul className="home__list">
+          <li className="home__item">
+            <Link to="/tetrogrid" className="home__link">TetroGrid</Link>
+          </li>
+          <li className="home__item">
+            <Link to="/snatrix" className="home__link">Snatrix</Link>
+          </li>
+        </ul>
+      </div>
     </main>
   );
 }
