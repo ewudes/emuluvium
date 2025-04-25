@@ -75,6 +75,7 @@ body {
       display: block;
       content: '';
       animation: moveCat 50s linear infinite;
+      cursor: pointer;
     }
   }
 
@@ -269,10 +270,8 @@ body {
 @keyframes moveCat {
   from {
     transform: translateX(9100%) rotate(360deg);
-    // transform: translateX(150%);
   }
   to {
-    transform: translateX(-1500%) rotate(0);
-    // transform: translateX(-1000%);
+    transform: translateX(-2000%) rotate(-360deg);
   }
 }
