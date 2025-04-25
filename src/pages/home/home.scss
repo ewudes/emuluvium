@@ -222,7 +222,29 @@ body {
   }
 
   &__item {
+    position: relative;
     text-align: center;
+  }
+
+  &__item-active {
+    &::after {
+      position: absolute;
+      top: -5px;
+      left: 0;
+      content: '';
+      display: block;
+      width: 100px;
+      height: 60px; 
+      background-image: url('./../../vendor/ui/arrow.png');
+      background-size: 95%;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: pulse 4s linear infinite;
+    }
+
+    & > .home__link {
+      font-size: 64px;
+    }
   }
 
   &__link {
@@ -273,5 +295,20 @@ body {
   }
   to {
     transform: translateX(-2000%) rotate(-360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: .8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.6);
+    opacity: .8;
   }
 }
