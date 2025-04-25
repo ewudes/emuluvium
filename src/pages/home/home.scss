@@ -300,7 +300,7 @@ body {
 
 @keyframes pulse {
   0% {
-    transform: scale(0.6);
+    transform: scale(0.8);
     opacity: .8;
   }
   50% {
@@ -308,7 +308,7 @@ body {
     opacity: 1;
   }
   100% {
-    transform: scale(0.6);
+    transform: scale(0.8);
     opacity: .8;
   }
 }
