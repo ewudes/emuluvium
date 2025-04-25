@@ -7,9 +7,12 @@ import Hint from "../../components/hint/hint";
 import "./home.scss";
 
 const Home = () => {
-  console.log('kek', HINT_SCHEME.LEFT)
   return (
     <main className="home__wrapper">
+      <div className="home__bg-wrap">
+        <div className="home__bg"></div>
+        <div className="home__bg"></div>
+      </div>
       <Nav />
       <div className="home__badge">
         <a href="https://github.com/ewudes/emuluvium" target="_blank" className="home__badge-icon"></a>
