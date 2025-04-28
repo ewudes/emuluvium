@@ -51,6 +51,7 @@ function useBoard() {
   });
   const [gameTime, setGameTime] = useState(0);
   const timerRef = useRef(null);
+  const [isNavActive, setIsNavActive] = useState(false);
 
   useEffect(() => {
     if (!isGameOver && !isPaused) {
@@ -247,7 +248,21 @@ function useBoard() {
     }, [delay]);
   }
 
-  return [display, score, isGameOver, nextShape, level, onKeyDown, isPaused, restartGame, fallSpeed, highScore, gameTime];
+  return [
+    display,
+    score,
+    isGameOver,
+    nextShape,
+    level,
+    onKeyDown,
+    isPaused,
+    restartGame,
+    fallSpeed,
+    highScore,
+    gameTime,
+    setIsNavActive,
+    isNavActive
+  ];
 }
 
 function formatGameTime(seconds) {
@@ -260,7 +275,21 @@ function formatGameTime(seconds) {
 }
 
 const Tetrogrid = () => {
-  const [display, score, isGameOver, nextShape, level, onKeyDown, isPaused, restartGame, fallSpeed, highScore, gameTime] = useBoard();
+  const [
+    display,
+    score,
+    isGameOver,
+    nextShape,
+    level,
+    onKeyDown,
+    isPaused,
+    restartGame,
+    fallSpeed,
+    highScore,
+    gameTime,
+    setIsNavActive,
+    isNavActive
+  ] = useBoard();
   const eBoard = useRef();
 
   useEffect(() => {
@@ -325,7 +354,7 @@ const Tetrogrid = () => {
         <div className="tetrogrid__bg"></div>
         <div className="tetrogrid__bg"></div>
       </div>
-      <Nav/>
+      <Nav onActiveChange={setIsNavActive} />
       <div className="tetrogrid__profile">
         <Profile />
       </div>
@@ -368,7 +397,7 @@ const Tetrogrid = () => {
       </div>
       {isGameOver && <GameOver score={score} gameTime={formatGameTime(gameTime)} handleClick={handleRestart} />}
       {isPaused && <Pause />}
-      <Hint scheme={HINT_SCHEME} mode={HINT_SCHEME.MODE}/>
+      {!isNavActive && <Hint scheme={HINT_SCHEME} mode={HINT_SCHEME.MODE} />}
     </div>
   );
 };
