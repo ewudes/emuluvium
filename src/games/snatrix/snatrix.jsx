@@ -19,6 +19,7 @@ const Snatrix = () => {
   const [isPaused, setPaused] = useState(false);
   const [speed, setSpeed] = useState(200);
   const directionRef = useRef(direction);
+  const [isNavActive, setIsNavActive] = useState(false);
   directionRef.current = direction;
 
   useEffect(() => {
@@ -93,7 +94,7 @@ const Snatrix = () => {
         <div className="snatrix__bg"></div>
         <div className="snatrix__bg"></div>
       </div>
-      <Nav/>
+      <Nav onActiveChange={setIsNavActive} />
       <Profile />
       <div
         className="snatrix__board"
@@ -119,7 +120,7 @@ const Snatrix = () => {
         })}
       </div>
       {isGameOver && <GameOver score={11} gameTime={100} handleClick={restartGame}/>}
-      <Hint scheme={HINT_SCHEME}/>
+      {!isNavActive && <Hint scheme={HINT_SCHEME} mode={HINT_SCHEME.MODE} />}
     </div>
   );
 };
