@@ -95,7 +95,9 @@ const Snatrix = () => {
         <div className="snatrix__bg"></div>
       </div>
       <Nav onActiveChange={setIsNavActive} />
-      <Profile />
+      <div className="snatrix__profile">
+        <Profile />
+      </div>
       <div
         className="snatrix__board"
         style={{

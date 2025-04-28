@@ -83,6 +83,23 @@
     text-align: center;
   }
 
+  &__profile {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+
+    & > div {
+      background-position: right;
+      padding-left: 0;
+      padding-right: 70px;
+
+      & > div {
+        margin-left: 0;
+        margin-right: 20px;
+      }
+    }
+  }
+
   &__gameover {
     color: red;
     font-size: 1.5rem;
