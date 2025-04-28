@@ -75,7 +75,6 @@ const Hint = ({scheme, mode}) => {
             <span className="tetrogrid__hint-label">{scheme.LEFT}/{scheme.RIGHT}</span>
           </div>
         }
-
       </div> 
     </> 
   );
