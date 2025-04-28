@@ -113,6 +113,13 @@ body {
     color: #ffffff;
   }
 
+  &__profile {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   &__overlay {
     position: absolute;
     top: 50%;

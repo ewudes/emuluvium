@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link, withRouter } from "react-router-dom";
 import { HINT_SCHEME } from "./const";
 import Nav from "../../components/nav/nav";
+import Profile from "../../components/profile/profile";
 import Hint from "../../components/hint/hint";
 
 import "./home.scss";
@@ -13,6 +14,7 @@ const Home = ({ history }) => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isNavActive, setIsNavActive] = useState(false);
   const linkRefs = useRef([]);
 
   useEffect(() => {
@@ -40,10 +42,13 @@ const Home = ({ history }) => {
         <div className="home__bg"></div>
         <div className="home__bg"></div>
       </div>
-      <Nav />
+      <Nav onActiveChange={setIsNavActive} />
       <div className="home__badge">
         <a href="https://github.com/ewudes/emuluvium" target="_blank" className="home__badge-icon"></a>
         <span className="home__badge-text">code on github</span>
+      </div>
+      <div className="home__profile">
+        <Profile />
       </div>
       <div className="home__overlay">
         <h1 className="home__title">Emuluvium</h1>
@@ -64,7 +69,7 @@ const Home = ({ history }) => {
           ))}
         </ul>
       </div>
-      <Hint scheme={HINT_SCHEME} mode={HINT_SCHEME.MODE}/>
+      {!isNavActive && <Hint scheme={HINT_SCHEME} mode={HINT_SCHEME.MODE} />}
     </main>
   );
 }
