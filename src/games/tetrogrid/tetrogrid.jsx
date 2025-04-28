@@ -326,7 +326,9 @@ const Tetrogrid = () => {
         <div className="tetrogrid__bg"></div>
       </div>
       <Nav/>
-      <Profile />
+      <div className="tetrogrid__profile">
+        <Profile />
+      </div>
       <div className="tetrogrid__aside tetrogrid__aside--left">
         <div className="tetrogrid__score-wrap">
           <span className="tetrogrid__score-label">Текущий: <span>{score.toLocaleString()}</span></span>
