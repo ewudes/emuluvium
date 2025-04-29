@@ -11,7 +11,7 @@ body {
 
     &::after {
       position: absolute;
-      top: 130px;
+      top: 140px;
       right: 50px;
       content: '';
       display: block;
@@ -76,6 +76,7 @@ body {
       content: '';
       animation: moveCat 50s linear infinite;
       cursor: pointer;
+      z-index: 9;
     }
   }
 
@@ -157,6 +158,83 @@ body {
       width: 570px;
       height: 430px;
       background-color: #fcfcfc;
+    }
+  }
+
+  &__left,
+  &__right {
+    position: absolute;
+    top: 60px;
+    width: 400px;
+    height: 465px;
+    background-color: #147ba8;
+  }
+
+  &__left {
+    left: -400px;
+    border-radius: 15px 0 0 15px;
+    box-shadow:
+              -12px 0px 14px -12px rgba(37, 61, 99, 0.922) inset,
+              -6px 0px 19px -10px rgba(37, 61, 99, 0.922);
+
+    &::before {
+      display: block;
+      width: 385px;
+      height: 435px;
+      border-radius: 15px 0 0 15px;
+      background-color: #36bbf7;
+      margin: 15px 15px 0 15px;
+      box-shadow: -12px 0px 14px -12px rgba(37, 61, 99, 0.922) inset;
+      content: '';
+    }  
+  }
+
+  &__right {
+    right: -400px;
+    border-radius: 0 15px 15px 0;
+    box-sizing: border-box;
+    box-shadow:
+              12px 0px 14px -12px rgba(37, 61, 99, 0.922) inset,
+              6px 0px 19px -10px rgba(37, 61, 99, 0.922);
+
+    &::before {
+      position: absolute;
+      display: block;
+      width: 385px;
+      height: 435px;
+      border-radius: 0 15px 15px 0;
+      background-color: #36bbf7;
+      margin: 15px 15px 15px 0;
+      box-shadow: 12px 0px 14px -12px rgba(37, 61, 99, 0.922) inset;
+      content: '';
+    }    
+  }
+
+  &__count-list {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'bit-opirus', Futura, sans-serif;
+    font-size: 15px;
+    color: #fcfcfc;
+  }
+  
+  &__count-item {
+    display: flex;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    text-shadow: 1px 1px 2px #3d3d3d;
+
+    & > span {
+      color: #fdd335;
+      margin-left: auto;
+      margin-right: 10px;
+      font-size: 18px;
+      text-shadow: 1px 1px 2px #3d3d3d;
     }
   }
 
