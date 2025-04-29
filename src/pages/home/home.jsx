@@ -68,6 +68,17 @@ const Home = ({ history }) => {
             </li>
           ))}
         </ul>
+        <div className="home__left"></div>
+        <div className="home__right">
+          <ul className="home__count-list">
+            <li className="home__count-item">Рейтинг:<span>99999</span></li>
+            <li className="home__count-item">Любимая игра:<span>TetroGrid</span></li>
+            <li className="home__count-item">Всего очков:<span>99999</span></li>
+            <li className="home__count-item">Всего время:<span>99999</span></li>
+            <li className="home__count-item">Ранг:<span>99999</span></li>
+            <li className="home__count-item">Найдено котиков:<span>999</span></li>
+          </ul>
+        </div>
       </div>
       {!isNavActive && <Hint scheme={HINT_SCHEME} mode={HINT_SCHEME.MODE} />}
     </main>
