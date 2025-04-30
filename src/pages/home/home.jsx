@@ -5,6 +5,8 @@ import Nav from "../../components/nav/nav";
 import Profile from "../../components/profile/profile";
 import Hint from "../../components/hint/hint";
 
+import LeaderPic from "./../../vendor/decorate/profile-avatar.png";
+
 import "./home.scss";
 
 const Home = ({ history }) => {
@@ -68,8 +70,25 @@ const Home = ({ history }) => {
             </li>
           ))}
         </ul>
-        <div className="home__left"></div>
+        <div className="home__left">
+          <h2 className="home__leaders-title">8-битная элита</h2>
+          <div className="home__leaders-wrap">
+            <ul className="home__leaders-list">
+              <li className="home__leaders-item"><img src={LeaderPic} width="55" height="55"/>Барсик<span>99999</span></li>
+              <li className="home__leaders-item"><img src={LeaderPic} width="55" height="55"/>Томас<span>99999</span></li>
+              <li className="home__leaders-item"><img src={LeaderPic} width="55" height="55"/>Рыжик<span>99999</span></li>
+              <li className="home__leaders-item"><img src={LeaderPic} width="55" height="55"/>Пушистик<span>99999</span></li>
+              <li className="home__leaders-item"><img src={LeaderPic} width="55" height="55"/>Муся<span>99999</span></li>
+              <li className="home__leaders-item"><img src={LeaderPic} width="55" height="55"/>Борис<span>99999</span></li>
+              <li className="home__leaders-item"><img src={LeaderPic} width="55" height="55"/>Пипи<span>99999</span></li>
+              <li className="home__leaders-item"><img src={LeaderPic} width="55" height="55"/>Анатолий<span>99999</span></li>
+              <li className="home__leaders-item"><img src={LeaderPic} width="55" height="55"/>Фара<span>99999</span></li>
+              <li className="home__leaders-item"><img src={LeaderPic} width="55" height="55"/>Пиксель<span>99999</span></li>
+            </ul>
+          </div>
+        </div>
         <div className="home__right">
+          <h2 className="home__count-title">Статистика</h2>
           <ul className="home__count-list">
             <li className="home__count-item">Рейтинг:<span>99999</span></li>
             <li className="home__count-item">Любимая игра:<span>TetroGrid</span></li>
