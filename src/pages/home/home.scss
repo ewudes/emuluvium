@@ -132,7 +132,7 @@ body {
     box-shadow: 0px 0px 10px 0px #253d63eb;
     box-sizing: border-box;
     margin: 0 auto;
-    width: 600px;
+    width: 550px;
 
     &::after {
       position: absolute;
@@ -142,7 +142,7 @@ body {
       box-sizing: border-box;
       content: '';
       display: block;
-      width: 570px;
+      width: 520px;
       height: 122px;
       background-color: #36bcf7;
     }
@@ -155,7 +155,7 @@ body {
       box-sizing: border-box;
       content: '';
       display: block;
-      width: 570px;
+      width: 520px;
       height: 430px;
       background-color: #fcfcfc;
     }
@@ -177,16 +177,66 @@ body {
               -12px 0px 14px -12px rgba(37, 61, 99, 0.922) inset,
               -6px 0px 19px -10px rgba(37, 61, 99, 0.922);
 
+    &::after,
     &::before {
-      display: block;
-      width: 385px;
-      height: 435px;
-      border-radius: 15px 0 0 15px;
-      background-color: #36bbf7;
-      margin: 15px 15px 0 15px;
-      box-shadow: -12px 0px 14px -12px rgba(37, 61, 99, 0.922) inset;
+      position: absolute;
+      left: 30px;
       content: '';
-    }  
+      display: block;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: #157ca8;
+      z-index: 9;
+    }
+
+    &::after {
+      top: 30px
+    }
+
+    &::before {
+      bottom: 30px;
+    } 
+  }
+
+  &__leaders-wrap {
+    height: 435px;
+    background-color: #36bbf7;
+    margin: 15px 0 15px 15px;
+    padding-top: 45px;
+    border-radius: 15px 0 0 15px;
+    box-sizing: border-box;
+    box-shadow: -12px 0px 14px -12px rgba(37, 61, 99, 0.922) inset;
+  }
+
+  &__leaders-list {
+    list-style-type: none;
+    padding: 0;
+    font-family: 'bit-opirus', Futura, sans-serif;
+    height: 325px;
+    font-size: 15px;
+    overflow-y: scroll;
+    color: #fcfcfc;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+
+  &__leaders-title {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    width: 100%;
+    font-family: 'bit-opirus', Futura, sans-serif;
+    text-shadow: 1px 1px 2px #3d3d3d;
+    color: #fcfcfc;
+    text-align: center;
+    padding-left: 30px;
+    margin-bottom: 40px;
+    z-index: 9;
   }
 
   &__right {
@@ -197,17 +247,44 @@ body {
               12px 0px 14px -12px rgba(37, 61, 99, 0.922) inset,
               6px 0px 19px -10px rgba(37, 61, 99, 0.922);
 
+    &::after,
     &::before {
       position: absolute;
-      display: block;
-      width: 385px;
-      height: 435px;
-      border-radius: 0 15px 15px 0;
-      background-color: #36bbf7;
-      margin: 15px 15px 15px 0;
-      box-shadow: 12px 0px 14px -12px rgba(37, 61, 99, 0.922) inset;
+      left: 345px;
       content: '';
-    }    
+      display: block;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: #157ca8;
+      z-index: 9;
+    }
+
+    &::after {
+      top: 30px
+    }
+
+    &::before {
+      bottom: 30px;
+    } 
+  }
+
+  &__leaders-item {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    text-shadow: 1px 1px 2px #3d3d3d;
+
+    & > img {
+      margin-right: 15px;
+    }
+
+    & > span {
+      margin-left: auto;
+      margin-right: 15px;
+      color: #fdd335;
+    }
   }
 
   &__count-list {
@@ -217,16 +294,37 @@ body {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    padding-top: 60px;
     font-family: 'bit-opirus', Futura, sans-serif;
+    background-color: #36bbf7;
+    margin: 0px 15px 0 0;
+    border-radius: 0 15px 15px 0;
+    box-sizing: border-box;
+    height: 435px;
+    box-shadow: 12px 0px 14px -12px rgba(37, 61, 99, 0.922) inset;
     font-size: 15px;
     color: #fcfcfc;
+  }
+
+  &__count-title {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 21px;
+    font-family: 'bit-opirus', Futura, sans-serif;
+    text-shadow: 1px 1px 2px #3d3d3d;
+    color: #fcfcfc;
+    text-align: center;
+    margin-bottom: 40px;
+    padding-right: 20px;
+    z-index: 9;
   }
   
   &__count-item {
     display: flex;
-    padding-right: 15px;
     padding-left: 15px;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     text-shadow: 1px 1px 2px #3d3d3d;
 
     & > span {
