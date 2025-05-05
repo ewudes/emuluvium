@@ -49,10 +49,11 @@ const Home = ({ history }) => {
         <a href="https://github.com/ewudes/emuluvium" target="_blank" className="home__badge-icon"></a>
         <span className="home__badge-text">code on github</span>
       </div>
-      <div className="home__profile">
-        <Profile />
-      </div>
+
       <div className="home__overlay">
+        <div className="home__profile">
+          <Profile />
+        </div>
         <h1 className="home__title">Emuluvium</h1>
         <ul className="home__list">
           {links.map((link, index) => (

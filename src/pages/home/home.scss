@@ -115,10 +115,11 @@ body {
   }
 
   &__profile {
-    position: absolute;
-    top: 90px;
+    position: relative;
+    display: flex;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -110px);
+    z-index: 999999999999999999999;
   }
 
   &__overlay {
@@ -339,6 +340,7 @@ body {
   &__title {
     position: relative;
     margin: 15px;
+    margin-top: -57px;
     margin-bottom: 0;
     text-align: center;
     padding: 13px 0;
