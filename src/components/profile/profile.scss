@@ -22,6 +22,17 @@
   }
 
   &__overlay {
-    display: none;;
+    display: none;
+
+    &--true {
+      display: block;
+      position: absolute;
+      top: 190%;
+      left: -26%;
+      width: 800px;
+      height: 500px;
+      background-color: green;
+      z-index: 9999999999999999;
+    }
   }
 }
