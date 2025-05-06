@@ -25,14 +25,67 @@
     display: none;
 
     &--true {
-      display: block;
+      display: flex;
+      flex-wrap: wrap;
       position: absolute;
       top: 190%;
-      left: -26%;
+      left: -28%;
       width: 800px;
       height: 500px;
-      background-color: green;
-      z-index: 9999999999999999;
+      background-color: #14a0d8;
+      border: 5px solid transparent;
+      border-image: url('./../../vendor/decorate/border-overlay.png') 3 round;
+      box-shadow: 0px 0px 5px 0px #000000bf;
+      border-radius: 10px;
+      color: #ffffff;
+      cursor: auto;
+
+      // &::after {
+      //   content: '';
+      //   position: absolute;
+      //   top: -100%;
+      //   left: -100%;
+      //   right: -100%;
+      //   bottom: -100%;
+      //   background-color: #000000;
+      //   opacity: .5;
+      //   z-index: -1;
+      // }
     }
+  }
+
+  &__pic {
+    margin-top: 30px;
+    margin-left: auto;
+  }
+
+  &__username {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    margin-left: 30px;
+    font-size: 20px;
+  }
+
+  &__hint {
+    font-size: 12px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  &__awards-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__awards-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 120px;
   }
 }
