@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, withRouter } from "react-router-dom";
-import { HINT_SCHEME } from "./const";
+import { HINT_SCHEME, POPUP_TEXT } from "./const";
 import Nav from "../../components/nav/nav";
 import Profile from "../../components/profile/profile";
 import Hint from "../../components/hint/hint";
+import Popup from "../../components/popup/popup";
 
 import LeaderPic from "./../../vendor/decorate/profile-avatar.png";
 
@@ -101,6 +102,7 @@ const Home = ({ history }) => {
         </div>
       </div>
       {!isNavActive && <Hint scheme={HINT_SCHEME} mode={HINT_SCHEME.MODE} />}
+      {/* {<Popup text={POPUP_TEXT}/>} */}
     </main>
   );
 }
