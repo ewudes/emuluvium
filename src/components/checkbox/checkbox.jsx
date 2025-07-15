@@ -5,7 +5,7 @@ const Checkbox = ({label, id, checked}) => {
   return (
     <>
       <input className="checkbox__input" type="checkbox" id={id} checked={checked} />
-      <label className="checkbox__label" for={id}>{label}</label>
+      <label className="checkbox__label" htmlFor={id}>{label}</label>
     </>
   );
 }
