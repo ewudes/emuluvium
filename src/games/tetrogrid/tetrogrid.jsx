@@ -372,7 +372,10 @@ const Tetrogrid = () => {
         </div>
       </div>
       <div className="tetrogrid__wrapper">
-        <div className="tetrogrid__fires-wrap">
+        <div className="tetrogrid__speedometer">
+          <span className="tetrogrid__needle"></span>
+        </div>
+        {/* <div className="tetrogrid__fires-wrap">
           <ul className="tetrogrid__fires">
             <li className="tetrogrid__fire"></li>
             <li className="tetrogrid__fire"></li>
@@ -380,7 +383,7 @@ const Tetrogrid = () => {
             <li className="tetrogrid__fire"></li>
             <li className="tetrogrid__fire"></li>
           </ul>
-        </div>
+        </div> */}
         <div ref={eBoard} className="tetrogrid__board tetrogrid__bg-inside" tabIndex={0} onKeyDown={onKeyDown}>
           {display.map((row, index) => (
             <Row key={index} row={row} />
